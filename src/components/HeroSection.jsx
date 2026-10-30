@@ -64,13 +64,13 @@ export default function HeroSection() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex min-h-12 items-center gap-3 bg-amber px-6 py-3 font-mono text-sm font-bold uppercase text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
               Request a quote <FiArrowRight aria-hidden="true" />
             </a>
             <a
-              href="#services"
+              href="/services"
               className="inline-flex min-h-12 items-center gap-3 border border-white/15 bg-charcoal/60 px-5 py-3 font-mono text-sm font-semibold uppercase text-ink transition-colors hover:border-amber/50 hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
             >
               Explore our services <FiArrowRight aria-hidden="true" />

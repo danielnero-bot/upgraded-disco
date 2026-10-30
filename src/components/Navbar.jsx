@@ -9,12 +9,12 @@ import {
 } from "react-icons/fi";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "HSE & Safety", href: "#safety" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "HSE & Safety", href: "/safety" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -55,7 +55,7 @@ export default function Navbar() {
         className="container-x flex min-h-20 items-center justify-between gap-4 py-3"
       >
         <a
-          href="#home"
+          href="/"
           aria-label="Kobbs Global home"
           className="inline-flex shrink-0 items-center rounded-sm  p-1.5"
         >
@@ -80,7 +80,7 @@ export default function Navbar() {
         </div>
 
         <a
-          href="#contact"
+          href="/contact"
           className="hidden shrink-0 items-center gap-2 rounded-sm bg-amber px-5 py-3 text-sm font-bold text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink lg:inline-flex"
         >
           Request a Quote{" "}
@@ -149,7 +149,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/contact"
               onClick={() => setMenuOpen(false)}
               className="mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-amber px-5 py-3 text-sm font-bold text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >

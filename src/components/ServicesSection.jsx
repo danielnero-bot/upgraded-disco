@@ -115,7 +115,7 @@ export default function ServicesSection() {
                     {description}
                   </p>
                   <a
-                    href="#contact"
+                    href="/contact"
                     className="mt-6 inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase text-amber focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
                   >
                     Discuss this service{" "}
@@ -141,7 +141,7 @@ export default function ServicesSection() {
             </p>
           </div>
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex shrink-0 items-center gap-2 font-mono text-xs font-semibold uppercase text-ink hover:text-amber"
           >
             Submit fleet requirements <FiArrowRight aria-hidden="true" />
