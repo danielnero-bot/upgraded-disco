@@ -5,6 +5,11 @@ import {
   FiSettings,
   FiLayers,
 } from "react-icons/fi";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
@@ -51,22 +56,42 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(sectionRef.current.querySelectorAll('.reveal'), {
+        opacity: 0,
+        y: 30,
+        stagger: 0.12,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+        },
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="services"
+      ref={sectionRef}
       className="bg-charcoal py-16 text-ink sm:py-20 lg:py-24"
     >
       <div className="container-x">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow mb-2 font-semibold text-amber">
+            <p className="eyebrow mb-2 font-semibold text-amber reveal">
               Operational deployment portfolio
             </p>
-            <h2 className="text-3xl font-bold uppercase sm:text-4xl">
+            <h2 className="text-3xl font-bold uppercase sm:text-4xl reveal">
               Core specialized services
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-6 text-ink-muted">
+          <p className="max-w-md text-sm leading-6 text-ink-muted reveal">
             Industrial equipment and certified transport setups deployed under
             rigorous engineering protocols across maritime, swamp and dryland
             terrain.
@@ -86,7 +111,7 @@ export default function ServicesSection() {
             }) => (
               <article
                 key={number}
-                className="group flex min-h-124 flex-col overflow-hidden bg-navy"
+                className="group flex min-h-124 flex-col overflow-hidden bg-navy reveal"
               >
                 <div className="relative h-56 shrink-0 overflow-hidden bg-slate/20">
                   <img
@@ -118,7 +143,7 @@ export default function ServicesSection() {
                     href="/contact"
                     className="mt-6 inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase text-amber focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
                   >
-                    Discuss this service{" "}
+                    Discuss this service{' '}
                     <FiArrowRight
                       aria-hidden="true"
                       className="transition-transform group-hover:translate-x-1"
@@ -126,7 +151,7 @@ export default function ServicesSection() {
                   </a>
                 </div>
               </article>
-            ),
+            )
           )}
         </div>
 

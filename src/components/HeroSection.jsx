@@ -1,4 +1,9 @@
 import { FiArrowRight, FiCompass, FiShield, FiTruck } from "react-icons/fi";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const operationalFacts = [
   {
@@ -22,9 +27,30 @@ const operationalFacts = [
 ];
 
 export default function HeroSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Fade in the whole section content
+      gsap.from(sectionRef.current.querySelectorAll(".reveal"), {
+        opacity: 0,
+        y: 30,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="home"
+      ref={sectionRef}
       className="relative isolate overflow-hidden bg-navy text-ink"
     >
       <div
@@ -54,10 +80,10 @@ export default function HeroSection() {
         </div>
 
         <div className="max-w-4xl">
-          <h1 className="max-w-3xl font-display text-5xl font-bold uppercase leading-[1.02] sm:text-6xl lg:text-7xl">
+          <h1 className="max-w-3xl font-display text-5xl font-bold uppercase leading-[1.02] sm:text-6xl lg:text-7xl reveal">
             Moving industry <span className="text-amber">forward.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-muted sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-muted sm:text-xl reveal">
             Haulage, heavy-lift and industrial transportation solutions for
             demanding projects across Nigeria and the Gulf of Guinea energy
             corridor.
@@ -80,7 +106,7 @@ export default function HeroSection() {
 
         <div className="mt-16 grid gap-px border border-white/10 bg-white/10 md:grid-cols-3">
           {operationalFacts.map(({ icon: Icon, label, value, detail }) => (
-            <div key={label} className="bg-charcoal/90 p-5 sm:p-6">
+            <div key={label} className="bg-charcoal/90 p-5 sm:p-6 reveal">
               <div className="mb-3 flex items-center gap-2 font-mono text-xs font-semibold uppercase text-amber">
                 <Icon aria-hidden="true" />
                 {label}

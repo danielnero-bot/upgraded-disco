@@ -13,19 +13,20 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef(null);
   const navRef = useRef(null);
-  
+
   // Animate header and nav links on mount
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(headerRef.current, { y: -30, opacity: 0, duration: 0.6 });
-      gsap.from(navRef.current.querySelectorAll('a'), {
+      gsap.from(navRef.current.querySelectorAll("a"), {
         y: 20,
         opacity: 0,
         stagger: 0.08,
         duration: 0.5,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
     }, [headerRef, navRef]);
     return () => ctx.revert();
@@ -35,23 +36,25 @@ export default function Navbar() {
   useEffect(() => {
     if (menuOpen) {
       gsap.fromTo(
-        '#mobile-navigation',
+        "#mobile-navigation",
         { height: 0, opacity: 0 },
-        { height: 'auto', opacity: 1, duration: 0.4, ease: 'power2.out' }
+        { height: "auto", opacity: 1, duration: 0.4, ease: "power2.out" },
       );
     } else {
-      gsap.to('#mobile-navigation', {
+      gsap.to("#mobile-navigation", {
         height: 0,
         opacity: 0,
         duration: 0.3,
-        ease: 'power2.in',
+        ease: "power2.in",
       });
     }
   }, [menuOpen]);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header ref={headerRef} className="relative z-50 border-t-4 border-amber bg-navy text-ink shadow-lg">
+    <header
+      ref={headerRef}
+      className="relative z-50 border-t-4 border-amber bg-navy text-ink shadow-lg"
+    >
       <div className="border-b border-white/5 bg-charcoal">
         <div className="container-x flex min-h-9 items-center justify-between gap-4 py-2 text-[0.65rem] font-mono uppercase tracking-wide text-ink-muted">
           {/* Contact details removed */}
