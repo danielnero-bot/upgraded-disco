@@ -1,12 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
 import logo from "../assets/KOBBS_Global_Services_Logo-removebg-preview.png";
-import {
-  FiArrowUpRight,
-  FiMail,
-  FiMapPin,
-  FiPhone,
-  FiShield,
-} from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -18,36 +13,48 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const headerRef = useRef(null);
+  const navRef = useRef(null);
+  
+  // Animate header and nav links on mount
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(headerRef.current, { y: -30, opacity: 0, duration: 0.6 });
+      gsap.from(navRef.current.querySelectorAll('a'), {
+        y: 20,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    }, [headerRef, navRef]);
+    return () => ctx.revert();
+  }, []);
+
+  // Animate mobile menu opening/closing
+  useEffect(() => {
+    if (menuOpen) {
+      gsap.fromTo(
+        '#mobile-navigation',
+        { height: 0, opacity: 0 },
+        { height: 'auto', opacity: 1, duration: 0.4, ease: 'power2.out' }
+      );
+    } else {
+      gsap.to('#mobile-navigation', {
+        height: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in',
+      });
+    }
+  }, [menuOpen]);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="relative z-50 border-t-4 border-amber bg-navy text-ink shadow-lg">
       <div className="border-b border-white/5 bg-charcoal">
         <div className="container-x flex min-h-9 items-center justify-between gap-4 py-2 text-[0.65rem] font-mono uppercase tracking-wide text-ink-muted">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-            <span className="inline-flex items-center gap-1.5">
-              <FiMapPin className="text-amber" />
-              Base: Onne Port, Port Harcourt
-            </span>
-            <a
-              className="hidden items-center gap-1.5 transition-colors hover:text-ink sm:inline-flex"
-              href="tel:+2348037080258"
-            >
-              <FiPhone />
-              +234 (0) 803 708 0258
-            </a>
-            <a
-              className="hidden items-center gap-1.5 transition-colors hover:text-ink lg:inline-flex"
-              href="mailto:info@kobbsglobal.com"
-            >
-              <FiMail />
-              info@kobbsglobal.com
-            </a>
-          </div>
-          <span className="hidden shrink-0 items-center gap-1.5 text-amber sm:inline-flex">
-            <FiShield />
-            HSE-first operations
-          </span>
+          {/* Contact details removed */}
         </div>
       </div>
       <nav
@@ -62,7 +69,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Kobbs Global logo"
-            className="h-12 w-auto max-w-[min(56vw,280px)] object-contain"
+            className="h-12 w-auto max-w-[min(56vw,300px)] object-contain"
           />
         </a>
 
