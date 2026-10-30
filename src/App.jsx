@@ -1,11 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import CapabilitiesSection from "./components/CapabilitiesSection";
 import ServicesSection from "./components/ServicesSection";
 import ProjectsSection from "./components/ProjectsSection";
-import WhyChooseUsSection from "./components/WhyChooseUsSection";
-import SafetySection from "./components/SafetySection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import AboutPage from "./pages/AboutPage";
@@ -19,11 +16,8 @@ function HomePage() {
   return (
     <main>
       <HeroSection />
-      <CapabilitiesSection />
       <ServicesSection />
       <ProjectsSection />
-      <WhyChooseUsSection />
-      <SafetySection />
       <ContactSection />
     </main>
   );
