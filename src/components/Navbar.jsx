@@ -51,7 +51,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="relative z-50 border-t-4 border-amber bg-navy text-ink shadow-lg">
+    <header ref={headerRef} className="relative z-50 border-t-4 border-amber bg-navy text-ink shadow-lg">
       <div className="border-b border-white/5 bg-charcoal">
         <div className="container-x flex min-h-9 items-center justify-between gap-4 py-2 text-[0.65rem] font-mono uppercase tracking-wide text-ink-muted">
           {/* Contact details removed */}
@@ -73,7 +73,7 @@ export default function Navbar() {
           />
         </a>
 
-        <div className="hidden items-center gap-1 lg:flex">
+        <div ref={navRef} className="hidden items-center gap-1 lg:flex">
           {navItems.map(({ label, href }) => (
             <a
               key={label}
