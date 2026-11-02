@@ -90,7 +90,7 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="relative z-50 border-t-4 border-amber bg-navy text-ink shadow-lg"
+      className="fixed inset-x-0 top-0 z-50 border-t-4 border-amber bg-navy/95 text-ink shadow-lg backdrop-blur-sm"
     >
       <nav
         aria-label="Main navigation"

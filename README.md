@@ -1,16 +1,102 @@
-# React + Vite
+# Kobbs Global Services Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Corporate website for Kobbs Global Services Nigeria Limited, built with React, Vite, Tailwind CSS, and GSAP.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project is a modern corporate marketing site for an industrial logistics and haulage company operating in Nigeria, with emphasis on:
 
-## React Compiler
+- haulage and transportation
+- heavy lift and craneage
+- rig move operations
+- equipment leasing
+- safety and operational reliability
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The site includes a multi-page marketing experience, route-based navigation, animated sections, and a quote/contact flow.
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite 8
+- React Router
+- GSAP + ScrollTrigger
+- Tailwind CSS v4
+- React Icons
+- pnpm
+
+## Project structure
+
+```text
+src/
+  App.jsx
+  main.jsx
+  index.css
+  assets/
+  components/
+    Navbar.jsx
+    HeroSection.jsx
+    ServicesSection.jsx
+    ProjectsSection.jsx
+    ContactSection.jsx
+    Footer.jsx
+    PageIntro.jsx
+  pages/
+    AboutPage.jsx
+    ServicesPage.jsx
+    ProjectsPage.jsx
+    SafetyPage.jsx
+    ContactPage.jsx
+    NotFoundPage.jsx
+  hooks/
+    useScrollReveal.js
+public/
+```
+
+## Local development
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+Start the app:
+
+```bash
+pnpm dev
+```
+
+Build for production:
+
+```bash
+pnpm build
+```
+
+Preview production build locally:
+
+```bash
+pnpm preview
+```
+
+## Notes
+
+- Navigation uses React Router for client-side transitions.
+- GSAP is used for subtle motion and scroll reveal effects.
+- The design is intended to feel premium, industrial, and corporate rather than startup-style.
+- Some business content may require confirmation before publication, especially operational details, client references, and safety claims.
+
+## Important implementation note
+
+The current project is a custom front-end website, not a starter template. It should be treated as a live marketing site requiring content verification and final QA before launch.
+
+## Recommended next steps
+
+1. Confirm company profile details and operational claims.
+2. Finalise contact form backend or third-party form service.
+3. Review SEO metadata for each route.
+4. Validate responsiveness across mobile/tablet/desktop widths.
+5. Test the live site for broken links, form flow, and animation clean-up.
+
+## License
+
+This project is for internal business use and website development work related to Kobbs Global Services Nigeria Limited.
