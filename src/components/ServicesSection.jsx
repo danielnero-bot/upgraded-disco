@@ -5,14 +5,12 @@ import {
   FiSettings,
   FiLayers,
 } from "react-icons/fi";
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import useScrollReveal from "../hooks/useScrollReveal";
 import Haulage from "../assets/Haulage.jpg";
 import Heavy from "../assets/heavy.jpg";
 import Rig from "../assets/OIP (1).webp";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
@@ -21,7 +19,7 @@ const services = [
     title: "Haulage & transportation",
     description:
       "Overland transit for industrial plant components, line pipes, tubulars and oversized cargo, with dedicated pilot-escort coordination.",
-    image: Haulage ,
+    image: Haulage,
     alt: "Heavy transport truck on an industrial road",
   },
   {
@@ -30,7 +28,7 @@ const services = [
     title: "Heavy lift & craneage",
     description:
       "Engineered lifting, tandem crane operations and precision offloading for structural fabrications, offshore packages and pressure vessels.",
-    image: Heavy ,
+    image: Heavy,
     alt: "Industrial construction and lifting equipment at a worksite",
   },
   {
@@ -39,7 +37,7 @@ const services = [
     title: "Rig move operations",
     description:
       "End-to-end relocation of land and swamp drilling rigs, heavy mud pumps and camp modules under rigorous HSE protocols.",
-    image: Rig ,
+    image: Rig,
     alt: "Large industrial port cranes and cargo operations",
     featured: true,
   },
@@ -58,22 +56,7 @@ const services = [
 export default function ServicesSection() {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(sectionRef.current.querySelectorAll('.reveal'), {
-        opacity: 0,
-        y: 30,
-        stagger: 0.12,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-        },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  useScrollReveal(sectionRef, { stagger: 0.12 });
 
   return (
     <section
@@ -139,19 +122,19 @@ export default function ServicesSection() {
                   <p className="mt-3 flex-1 text-sm leading-6 text-ink-muted">
                     {description}
                   </p>
-                  <a
-                    href="/contact"
+                  <Link
+                    to="/contact"
                     className="mt-6 inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase text-amber focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
                   >
-                    Discuss this service{' '}
+                    Discuss this service{" "}
                     <FiArrowRight
                       aria-hidden="true"
                       className="transition-transform group-hover:translate-x-1"
                     />
-                  </a>
+                  </Link>
                 </div>
               </article>
-            )
+            ),
           )}
         </div>
 
@@ -165,12 +148,12 @@ export default function ServicesSection() {
               marshaling and staging-yard storage can be mobilized on request.
             </p>
           </div>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex shrink-0 items-center gap-2 font-mono text-xs font-semibold uppercase text-ink hover:text-amber"
           >
             Submit fleet requirements <FiArrowRight aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

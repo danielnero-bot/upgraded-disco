@@ -5,12 +5,10 @@ import {
   FiShield,
   FiTruck,
 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const operatingPrinciples = [
   {
@@ -46,22 +44,7 @@ const clientTypes = [
 export default function AboutPage() {
   const pageRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(pageRef.current.querySelectorAll(".reveal"), {
-        opacity: 0,
-        y: 30,
-        stagger: 0.12,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: pageRef.current,
-          start: "top 80%",
-        },
-      });
-    }, pageRef);
-    return () => ctx.revert();
-  }, []);
+  useScrollReveal(pageRef, { stagger: 0.12 });
 
   return (
     <div ref={pageRef}>
@@ -192,12 +175,12 @@ export default function AboutPage() {
               Tell us what your operation needs to move.
             </h2>
           </div>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 bg-amber px-5 py-3 font-mono text-xs font-bold uppercase text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink reveal"
           >
             Contact our team <FiArrowUpRight aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </section>
     </div>

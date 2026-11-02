@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/logo1.png";
 
 const footerGroups = [
@@ -36,8 +37,8 @@ export default function Footer() {
       <div className="container-x py-12 sm:py-14">
         <div className="grid gap-10 border-b border-white/10 pb-10 md:grid-cols-2 xl:grid-cols-5">
           <div className="space-y-5 xl:col-span-2">
-            <a
-              href="/"
+            <Link
+              to="/"
               aria-label="Kobbs Global home"
               className="inline-flex rounded-sm bg-white p-1.5"
             >
@@ -46,7 +47,7 @@ export default function Footer() {
                 alt="Kobbs Global Services logo"
                 className="h-12 w-auto object-contain"
               />
-            </a>
+            </Link>
             <p className="max-w-md text-sm leading-6 text-ink-muted">
               Nigerian industrial haulage, heavy-lift logistics, rig-move
               operations and oilfield equipment leasing from the Niger Delta
@@ -79,13 +80,13 @@ export default function Footer() {
                 className="flex flex-col gap-3"
               >
                 {links.map(([label, href]) => (
-                  <a
+                  <Link
                     key={label}
-                    href={href}
+                    to={href}
                     className="text-sm text-ink-muted transition-colors hover:text-amber"
                   >
                     {label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -101,12 +102,12 @@ export default function Footer() {
               Operational planning built around safe, controlled mobilization.
             </span>
           </p>
-          <a
+          <Link
             className="shrink-0 font-mono text-xs uppercase text-ink-muted hover:text-amber"
-            href="/contact"
+            to="/contact"
           >
             Contact Kobbs Global
-          </a>
+          </Link>
         </div>
         <div className="mt-5 flex flex-col gap-2 font-mono text-[0.65rem] uppercase text-slate sm:flex-row sm:items-center sm:justify-between">
           <p>

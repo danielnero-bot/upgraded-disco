@@ -1,4 +1,5 @@
 import { FiClipboard, FiTool, FiTruck } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
 import ServicesSection from "../components/ServicesSection";
 
@@ -59,12 +60,12 @@ export default function ServicesPage() {
               </article>
             ))}
           </div>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="mt-7 inline-flex items-center gap-2 bg-amber px-5 py-3 font-mono text-xs font-bold uppercase text-amber-foreground hover:bg-amber/90"
           >
             Discuss a requirement
-          </a>
+          </Link>
         </div>
       </section>
     </>

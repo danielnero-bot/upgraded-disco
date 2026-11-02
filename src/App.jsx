@@ -38,13 +38,24 @@ function RoutedApp() {
 
   // Page transition animation on route change
   useEffect(() => {
-    if (contentRef.current) {
-      gsap.fromTo(
-        contentRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-      );
+    window.scrollTo(0, 0);
+
+    if (!contentRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      gsap.set(contentRef.current, { opacity: 1, y: 0 });
+      return;
     }
+
+    gsap.fromTo(
+      contentRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+    );
   }, [location]);
   return (
     <>

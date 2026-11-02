@@ -5,6 +5,7 @@ import {
   FiAward,
   FiArrowUpRight,
 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const safeguards = [
   {
@@ -111,12 +112,12 @@ export default function SafetySection() {
                 </li>
               ))}
             </ul>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-white/5 px-4 py-3 text-center font-mono text-xs font-semibold uppercase transition-colors hover:bg-white/10 hover:text-amber focus-visible:outline-2 focus-visible:outline-amber"
             >
               Request HSE information <FiArrowUpRight aria-hidden="true" />
-            </a>
+            </Link>
           </aside>
         </div>
       </div>

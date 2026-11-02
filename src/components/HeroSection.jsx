@@ -1,9 +1,7 @@
 import { FiArrowRight, FiCompass, FiShield, FiTruck } from "react-icons/fi";
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const operationalFacts = [
   {
@@ -29,23 +27,7 @@ const operationalFacts = [
 export default function HeroSection() {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Fade in the whole section content
-      gsap.from(sectionRef.current.querySelectorAll(".reveal"), {
-        opacity: 0,
-        y: 30,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  useScrollReveal(sectionRef, { stagger: 0.1 });
 
   return (
     <section
@@ -89,18 +71,18 @@ export default function HeroSection() {
             corridor.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex min-h-12 items-center gap-3 bg-amber px-6 py-3 font-mono text-sm font-bold uppercase text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
               Request a quote <FiArrowRight aria-hidden="true" />
-            </a>
-            <a
-              href="/services"
+            </Link>
+            <Link
+              to="/services"
               className="inline-flex min-h-12 items-center gap-3 border border-white/15 bg-charcoal/60 px-5 py-3 font-mono text-sm font-semibold uppercase text-ink transition-colors hover:border-amber/50 hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
             >
               Explore our services <FiArrowRight aria-hidden="true" />
-            </a>
+            </Link>
           </div>
         </div>
 

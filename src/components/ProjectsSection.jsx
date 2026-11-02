@@ -1,4 +1,5 @@
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const references = [
   {
@@ -117,12 +118,12 @@ export default function ProjectsSection() {
             Formal client verification packs for historical assignments are
             available upon technical request.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex shrink-0 items-center gap-2 font-mono text-xs font-semibold uppercase text-amber"
           >
             Request project references <FiArrowRight aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
