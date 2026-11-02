@@ -6,7 +6,8 @@ const contactMethods = [
   {
     icon: FiMapPin,
     label: "Operations base",
-    value: "Federal Lighter Terminal, Onne Port, Rivers State",
+    value:
+      "Ambassador Nne Furo Kurubo, Model Secondary School Road, Onne, Port Harcourt, Rivers State.",
   },
   {
     icon: FiPhone,
@@ -17,8 +18,8 @@ const contactMethods = [
   {
     icon: FiMail,
     label: "Email",
-    value: "info@kobbsglobal.com",
-    href: "mailto:info@kobbsglobal.com",
+    value: "kobbs@kobbsglobal.com",
+    href: "mailto:kobbs@kobbsglobal.com",
   },
 ];
 
@@ -40,7 +41,7 @@ export default function ContactPage() {
     const subject = encodeURIComponent(
       `Quote request: ${formData.get("service")}`,
     );
-    window.location.href = `mailto:info@kobbsglobal.com?subject=${subject}&body=${encodeURIComponent(message)}`;
+    window.location.href = `mailto:kobbs@kobbsglobal.com?subject=${subject}&body=${encodeURIComponent(message)}`;
     setSubmitted(true);
   }
 
@@ -149,9 +150,9 @@ export default function ContactPage() {
                   If it does not, contact us directly at{" "}
                   <a
                     className="font-semibold text-navy underline"
-                    href="mailto:info@kobbsglobal.com"
+                    href="mailto:kobbs@kobbsglobal.com"
                   >
-                    info@kobbsglobal.com
+                    kobbs@kobbsglobal.com
                   </a>
                   .
                 </p>

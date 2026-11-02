@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
 import { useRef } from "react";
 import useScrollReveal from "../hooks/useScrollReveal";
-import pic from "../assets/thumbnail.jpg"
+import pic from "../assets/thumbnail.jpg";
 
 const operatingPrinciples = [
   {
@@ -52,7 +52,7 @@ export default function AboutPage() {
       <PageIntro
         eyebrow="About Kobbs Global"
         title="Built around the realities of industrial movement."
-        description="Kobbs Global Services Nigeria Limited coordinates haulage, heavy-lift and oilfield logistics for demanding work across Nigeria’s energy and infrastructure sectors."
+        description="Established in 1997, Kobbs Global Services Nigeria Limited supports haulage, heavy-lift, rig-move and equipment-leasing operations across oil and gas, construction and energy projects."
         image="https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?auto=format&fit=crop&w=2200&q=85"
         className="reveal"
       />
@@ -68,18 +68,19 @@ export default function AboutPage() {
             </h2>
             <div className="mt-5 max-w-2xl space-y-4 text-base leading-7 text-foreground/75 reveal">
               <p>
-                Moving heavy or out-of-gauge cargo takes more than transport
-                capacity. Routes, equipment configuration, lifting requirements
-                and site conditions all need to work together.
+                Kobbs Global Services Nigeria Limited was established in 1997
+                and has operated across Nigeria’s oil and gas, construction and
+                energy sectors, providing haulage, heavy-lift and rig-move
+                support for complex industrial assignments.
               </p>
               <p>
-                Kobbs Global brings those moving parts into one operational
-                plan, supporting industrial clients from early assessment
-                through field execution.
+                The company’s work is built around disciplined route planning,
+                equipment matching and operational coordination, with an
+                emphasis on safe movement planning and field execution.
               </p>
             </div>
           </div>
-          <figure className="relative min-h-72 overflow-hidden bg-navy lg:col-span-6 lg:min-h-[26rem] reveal">
+          <figure className="relative min-h-72 overflow-hidden bg-navy lg:col-span-6 lg:min-h-104 reveal">
             <img
               src={pic}
               alt="Cargo cranes at a working industrial port"
@@ -95,7 +96,8 @@ export default function AboutPage() {
                   aria-hidden="true"
                   className="mt-1 shrink-0 text-amber"
                 />
-                Federal Lighter Terminal, Onne Port, Rivers State
+                Ambassador Nne Furo Kurubo, Model Secondary School Road, Onne,
+                Port Harcourt, Rivers State.
               </p>
             </figcaption>
           </figure>

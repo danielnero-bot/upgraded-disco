@@ -55,17 +55,22 @@ export default function Footer() {
             </p>
             <div className="border-l-2 border-amber bg-charcoal p-4 font-mono text-xs leading-5 text-ink-muted">
               <p className="font-semibold uppercase text-amber">
-                Primary industrial base
+                Registered business address
               </p>
-              <p className="mt-1">
-                Federal Lighter Terminal, Onne Port Complex
-              </p>
-              <p>Port Harcourt, Rivers State, Nigeria</p>
+              <p className="mt-1">Ambassador Nne Furo Kurubo,</p>
+              <p>Model Secondary School Road, Onne,</p>
+              <p>Port Harcourt, Rivers State.</p>
               <a
                 className="mt-2 inline-block text-ink hover:text-amber"
                 href="tel:+2348037080258"
               >
                 +234 (0) 803 708 0258
+              </a>
+              <a
+                className="mt-1 inline-block text-ink hover:text-amber"
+                href="mailto:kobbs@kobbsglobal.com"
+              >
+                kobbs@kobbsglobal.com
               </a>
             </div>
           </div>
@@ -112,9 +117,9 @@ export default function Footer() {
         <div className="mt-5 flex flex-col gap-2 font-mono text-[0.65rem] uppercase text-slate sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} Kobbs Global Services Nigeria Limited.
-            RC 1493012.
+            Established in 1997.
           </p>
-          <p>Onne Port / Port Harcourt / Nigeria</p>
+          <p>Onne / Port Harcourt / Rivers State</p>
         </div>
       </div>
     </footer>

@@ -3,20 +3,20 @@ import { Link } from "react-router-dom";
 
 const references = [
   {
-    eyebrow: "Operational logistics / Fabrication & pipelines",
-    location: "Port Harcourt",
-    title: "Saipem Contracting Nigeria Logistics",
+    eyebrow: "Historical project record / 2014–2017",
+    location: "Nigeria",
+    title: "Provision of trucks for road transportation on the Egina project",
     description:
-      "Dedicated heavy transport support, pipe-section dispatch and yard logistics linking fabrication facilities with marine quaysides.",
-    scope: "Heavy haulage fleet charters & yard dispatch",
+      "Historical project record published by Kobbs Global: provision of trucks for road transportation on the Egina project for Saipem Contracting Nigeria Ltd.",
+    scope: "Road transportation support",
   },
   {
-    eyebrow: "Commercial maritime logistics / Inland transit",
-    location: "Onne Port",
-    title: "Murphy Shipping Support Operations",
+    eyebrow: "Historical project record / 2012",
+    location: "Nigeria",
+    title: "Haulage of equipment for a mini A.G.O. plant",
     description:
-      "Quayside vessel-discharge support, port-clearance haulage and overland heavy transit for industrial and oilfield consignments.",
-    scope: "Port clearance, offloading & line transit",
+      "Historical project record published by Kobbs Global: haulage of equipment for a mini A.G.O. plant for Niger/Delta Petroleum Resources Ltd — Murphy Shipping/Commercial Services.",
+    scope: "Equipment haulage",
   },
 ];
 
@@ -43,44 +43,42 @@ export default function ProjectsSection() {
             <div>
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2 font-mono text-xs uppercase">
                 <span className="font-semibold text-amber">
-                  Featured assignment / Nigeria deepwater
+                  Historical record / 2014–2017
                 </span>
-                <span className="text-ink-muted">Status: executed</span>
+                <span className="text-ink-muted">Published by company</span>
               </div>
               <h3 className="text-2xl font-bold uppercase leading-tight sm:text-3xl">
-                Egina project transportation support
+                Provision of trucks for road transportation on the Egina project
               </h3>
               <p className="mt-4 text-sm leading-7 text-ink-muted sm:text-base">
-                Critical heavy road haulage and inland freight movements for
-                large structural components and auxiliary materials associated
-                with a major Nigerian deepwater development. The work required
-                civil path audits, axle-load planning and secure convoy
-                coordination across southern logistics corridors.
+                This reflects a historical project record published by Kobbs
+                Global: provision of trucks for road transportation on the Egina
+                project for Saipem Contracting Nigeria Ltd. The project is
+                preserved as a past assignment and should not be presented as a
+                current client relationship.
               </p>
               <div className="mt-6 grid gap-4 border border-white/5 bg-black/20 p-4 sm:grid-cols-2">
                 <div>
                   <p className="font-mono text-[0.65rem] uppercase text-slate">
-                    Location / operating bases
+                    Reference period
                   </p>
-                  <p className="mt-1 text-sm font-medium">
-                    Port Harcourt / Onne FLT / Offshore staging
-                  </p>
+                  <p className="mt-1 text-sm font-medium">2014–2017</p>
                 </div>
                 <div>
                   <p className="font-mono text-[0.65rem] uppercase text-slate">
-                    Technical scope
+                    Client attribution
                   </p>
                   <p className="mt-1 text-sm font-medium">
-                    Heavy structural haulage & staging
+                    Saipem Contracting Nigeria Ltd.
                   </p>
                 </div>
               </div>
             </div>
             <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4 font-mono text-xs uppercase">
-              <span className="text-ink-muted">Reference: KGS-EGN-REF</span>
+              <span className="text-ink-muted">Historical project</span>
               <span className="inline-flex items-center gap-2 font-semibold text-amber">
                 <FiCheckCircle aria-hidden="true" />
-                Verified operation
+                Company-published record
               </span>
             </div>
           </article>

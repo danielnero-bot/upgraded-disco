@@ -6,9 +6,9 @@ import useScrollReveal from "../hooks/useScrollReveal";
 const operationalFacts = [
   {
     icon: FiCompass,
-    label: "Operational base",
-    value: "Federal Lighter Terminal, Onne Logistics Corridor",
-    detail: "Port Harcourt, Rivers State",
+    label: "Registered address",
+    value: "Ambassador Nne Furo Kurubo, Model Secondary School Road",
+    detail: "Onne, Port Harcourt, Rivers State",
   },
   {
     icon: FiTruck,
