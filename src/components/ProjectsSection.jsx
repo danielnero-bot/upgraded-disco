@@ -2,6 +2,7 @@ import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import haulageImage from "../assets/OIP (4).webp";
 import heavyImage from "../assets/OIP (3).webp";
+import thirdImage from "../assets/OIP (2).webp"
 
 const references = [
   {
@@ -45,7 +46,7 @@ export default function ProjectsSection() {
         <div className="grid gap-4 lg:grid-cols-12">
           <article className="flex flex-col justify-between border border-border bg-white lg:col-span-7">
             <figure className="relative h-56 overflow-hidden sm:h-72">
-              <img src={haulageImage} alt="Heavy truck for industrial road transportation" loading="lazy" className="size-full object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:transition-none" />
+              <img src={thirdImage} alt="Heavy truck for industrial road transportation" loading="lazy" className="size-full object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:transition-none" />
               <figcaption className="absolute bottom-3 left-3 bg-white/95 px-3 py-2 text-xs text-slate">Illustrative operations imagery</figcaption>
             </figure>
             <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
@@ -95,13 +96,13 @@ export default function ProjectsSection() {
 
           <div className="grid gap-4 lg:col-span-5">
             {references.map(
-              ({ eyebrow, location, title, description, scope }, index) => (
+              ({ eyebrow, location, title, description, scope, image }, index) => (
                 <article
                   key={title}
                   className="flex flex-col justify-between border border-border bg-white"
                 >
                   <figure className="relative h-40 overflow-hidden">
-                    <img src={index === 0 ? heavyImage : haulageImage} alt="Industrial logistics equipment" loading="lazy" className="size-full object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:transition-none" />
+                    <img src={image} alt="Industrial logistics equipment" loading="lazy" className="size-full object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:transition-none" />
                     <figcaption className="absolute bottom-2 left-2 bg-white/95 px-2 py-1 text-[0.65rem] text-slate">Illustrative operations imagery</figcaption>
                   </figure>
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
