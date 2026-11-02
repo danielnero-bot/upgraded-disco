@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
 import { useRef } from "react";
 import useScrollReveal from "../hooks/useScrollReveal";
+import pic from "../assets/thumbnail.jpg"
 
 const operatingPrinciples = [
   {
@@ -80,7 +81,7 @@ export default function AboutPage() {
           </div>
           <figure className="relative min-h-72 overflow-hidden bg-navy lg:col-span-6 lg:min-h-[26rem] reveal">
             <img
-              src="https://images.unsplash.com/photo-1513828583688-c52646e6e9a3?auto=format&fit=crop&w=1400&q=85"
+              src={pic}
               alt="Cargo cranes at a working industrial port"
               className="absolute inset-0 size-full object-cover"
               loading="lazy"
