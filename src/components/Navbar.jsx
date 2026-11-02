@@ -55,11 +55,6 @@ export default function Navbar() {
       ref={headerRef}
       className="relative z-50 border-t-4 border-amber bg-navy text-ink shadow-lg"
     >
-      <div className="border-b border-white/5 bg-charcoal">
-        <div className="container-x flex min-h-9 items-center justify-between gap-4 py-2 text-[0.65rem] font-mono uppercase tracking-wide text-ink-muted">
-          {/* Contact details removed */}
-        </div>
-      </div>
       <nav
         aria-label="Main navigation"
         className="container-x flex min-h-20 items-center justify-between gap-4 py-3"
@@ -72,7 +67,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Kobbs Global logo"
-            className="h-12 w-auto max-w-[min(56vw,300px)] object-contain"
+            className=""
           />
         </a>
 

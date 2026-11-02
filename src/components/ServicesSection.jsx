@@ -8,6 +8,9 @@ import {
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Haulage from "../assets/Haulage.jpg";
+import Heavy from "../assets/heavy.jpg";
+import Rig from "../assets/OIP (1).webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,8 +21,7 @@ const services = [
     title: "Haulage & transportation",
     description:
       "Overland transit for industrial plant components, line pipes, tubulars and oversized cargo, with dedicated pilot-escort coordination.",
-    image:
-      "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1000&q=85",
+    image: Haulage ,
     alt: "Heavy transport truck on an industrial road",
   },
   {
@@ -28,8 +30,7 @@ const services = [
     title: "Heavy lift & craneage",
     description:
       "Engineered lifting, tandem crane operations and precision offloading for structural fabrications, offshore packages and pressure vessels.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=85",
+    image: Heavy ,
     alt: "Industrial construction and lifting equipment at a worksite",
   },
   {
@@ -38,8 +39,7 @@ const services = [
     title: "Rig move operations",
     description:
       "End-to-end relocation of land and swamp drilling rigs, heavy mud pumps and camp modules under rigorous HSE protocols.",
-    image:
-      "https://images.unsplash.com/photo-1513828583688-c52646e6e9a3?auto=format&fit=crop&w=1000&q=85",
+    image: Rig ,
     alt: "Large industrial port cranes and cargo operations",
     featured: true,
   },
