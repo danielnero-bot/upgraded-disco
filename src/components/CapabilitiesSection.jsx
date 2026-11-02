@@ -33,18 +33,18 @@ const capabilities = [
 
 export default function CapabilitiesSection() {
   return (
-    <section id="about" className="bg-background py-16 text-foreground sm:py-20 lg:py-24">
+    <section id="about" className="bg-white py-16 text-navy sm:py-20 lg:py-24">
       <div className="container-x">
         <div className="mb-12 grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5">
-            <div className="eyebrow mb-3 flex items-center gap-2 font-semibold text-navy">
+            <div className="eyebrow mb-3 flex items-center gap-2 font-semibold text-amber-foreground">
               <span className="size-2 bg-amber" />Operational excellence & industrial competence
             </div>
             <h2 className="max-w-xl text-3xl font-bold uppercase leading-tight sm:text-4xl">
               Engineered transportation for Nigeria’s energy and infrastructure sectors.
             </h2>
           </div>
-          <div className="space-y-4 text-base leading-7 text-foreground/80 lg:col-span-7">
+          <div className="space-y-4 text-base leading-7 text-slate lg:col-span-7">
             <p>
               Kobbs Global Services Nigeria Limited provides mission-critical overland haulage, precision heavy lift and integrated oilfield logistics for deepwater operators, engineering contractors and infrastructure developers. Based in Port Harcourt, we coordinate complex freight movements where route constraints, oversized cargo and tight schedules leave little room for error.
             </p>
@@ -56,12 +56,12 @@ export default function CapabilitiesSection() {
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {capabilities.map(({ icon: Icon, number, title, description, outcome }) => (
-            <article key={number} className="flex min-h-72 flex-col justify-between border border-navy/10 bg-white p-6 shadow-sm">
+            <article key={number} className="flex min-h-72 flex-col justify-between border border-border bg-white p-6 transition-shadow hover:shadow-md">
               <div>
-                <div className="mb-5 flex size-12 items-center justify-center bg-background text-navy"><Icon aria-hidden="true" className="size-6" /></div>
+                <div className="mb-5 flex size-12 items-center justify-center border border-border text-navy"><Icon aria-hidden="true" className="size-6" /></div>
                 <p className="font-mono text-xs text-slate">Capability / {number}</p>
                 <h3 className="mt-2 text-xl font-bold leading-6">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-foreground/70">{description}</p>
+                <p className="mt-3 text-sm leading-6 text-slate">{description}</p>
               </div>
               <p className="mt-6 flex items-center gap-2 font-mono text-xs font-semibold uppercase text-navy">
                 <span className="text-amber">{outcome}</span><FiCheck aria-hidden="true" />

@@ -56,18 +56,18 @@ export default function ContactPage() {
       <section className="bg-background py-14 text-foreground sm:py-20">
         <div className="container-x grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="eyebrow mb-2 font-semibold text-navy">
+            <p className="eyebrow mb-2 font-semibold text-amber-foreground">
               Project assessment desk
             </p>
-            <h2 className="text-3xl font-bold uppercase">Request a quote</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-foreground/70">
+            <h2 className="text-3xl font-bold">Request a quote</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate">
               Include cargo dimensions, estimated weight, pickup and delivery
               locations, timing and any site access constraints you already
               know.
             </p>
             <form
               onSubmit={handleSubmit}
-              className="mt-7 space-y-5 border border-navy/10 bg-white p-5 sm:p-7"
+              className="mt-7 space-y-5 border border-border bg-white p-5 sm:p-7"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block text-sm font-medium">
@@ -76,7 +76,7 @@ export default function ContactPage() {
                     required
                     name="name"
                     autoComplete="name"
-                    className="mt-2 min-h-11 w-full border border-navy/20 bg-background px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
+                    className="mt-2 min-h-11 w-full border border-border bg-white px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
                   />
                 </label>
                 <label className="block text-sm font-medium">
@@ -84,7 +84,7 @@ export default function ContactPage() {
                   <input
                     name="company"
                     autoComplete="organization"
-                    className="mt-2 min-h-11 w-full border border-navy/20 bg-background px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
+                    className="mt-2 min-h-11 w-full border border-border bg-white px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
                   />
                 </label>
                 <label className="block text-sm font-medium">
@@ -94,7 +94,7 @@ export default function ContactPage() {
                     type="email"
                     name="email"
                     autoComplete="email"
-                    className="mt-2 min-h-11 w-full border border-navy/20 bg-background px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
+                    className="mt-2 min-h-11 w-full border border-border bg-white px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
                   />
                 </label>
                 <label className="block text-sm font-medium">
@@ -103,7 +103,7 @@ export default function ContactPage() {
                     type="tel"
                     name="phone"
                     autoComplete="tel"
-                    className="mt-2 min-h-11 w-full border border-navy/20 bg-background px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
+                    className="mt-2 min-h-11 w-full border border-border bg-white px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
                   />
                 </label>
               </div>
@@ -113,7 +113,7 @@ export default function ContactPage() {
                   required
                   defaultValue=""
                   name="service"
-                  className="mt-2 min-h-11 w-full border border-navy/20 bg-background px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
+                  className="mt-2 min-h-11 w-full border border-border bg-white px-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
                 >
                   <option value="" disabled>
                     Select a service
@@ -131,20 +131,20 @@ export default function ContactPage() {
                   required
                   name="details"
                   rows="5"
-                  className="mt-2 w-full border border-navy/20 bg-background p-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
+                  className="mt-2 w-full border border-border bg-white p-3 text-sm outline-none focus:border-amber focus:ring-2 focus:ring-amber/30"
                   placeholder="Cargo, route, schedule and any known constraints"
                 />
               </label>
               <button
                 type="submit"
-                className="inline-flex min-h-12 items-center bg-amber px-6 py-3 font-mono text-xs font-bold uppercase text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
+                className="inline-flex min-h-12 items-center bg-amber px-6 py-3 text-sm font-bold text-navy transition-colors hover:bg-amber/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
               >
                 Prepare email request
               </button>
               {submitted && (
                 <p
                   role="status"
-                  className="text-sm leading-6 text-foreground/70"
+                  className="text-sm leading-6 text-slate"
                 >
                   Your email application should open with the request details.
                   If it does not, contact us directly at{" "}
@@ -160,20 +160,20 @@ export default function ContactPage() {
             </form>
           </div>
           <aside className="lg:col-span-5">
-            <div className="border-l-4 border-amber bg-navy p-6 text-ink sm:p-7">
-              <p className="eyebrow font-semibold text-amber">Direct contact</p>
-              <h2 className="mt-2 text-2xl font-bold uppercase">
+            <div className="border border-border border-l-4 border-l-amber bg-white p-6 text-navy sm:p-7">
+              <p className="eyebrow font-semibold text-amber-foreground">Direct contact</p>
+              <h2 className="mt-2 text-2xl font-bold">
                 Reach the operations team
               </h2>
               <div className="mt-6 space-y-5">
                 {contactMethods.map(({ icon: Icon, label, value, href }) => (
                   <div
                     key={label}
-                    className="flex gap-3 border-t border-white/10 pt-4"
+                    className="flex gap-3 border-t border-border pt-4"
                   >
                     <Icon
                       aria-hidden="true"
-                      className="mt-1 size-5 shrink-0 text-amber"
+                      className="mt-1 size-5 shrink-0 text-amber-foreground"
                     />
                     <div>
                       <p className="font-mono text-[0.65rem] font-semibold uppercase text-slate">
@@ -182,7 +182,7 @@ export default function ContactPage() {
                       {href ? (
                         <a
                           href={href}
-                          className="mt-1 inline-block text-sm leading-6 text-ink hover:text-amber"
+                          className="mt-1 inline-block text-sm leading-6 text-navy hover:text-amber-foreground"
                         >
                           {value}
                         </a>
@@ -194,7 +194,7 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
-            <p className="mt-4 text-sm leading-6 text-foreground/70">
+            <p             className="mt-4 text-sm leading-6 text-slate">
               For faster assessment, include approximate cargo dimensions and
               weight, route endpoints, required delivery date and any lifting or
               access constraints.

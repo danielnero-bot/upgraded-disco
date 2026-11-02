@@ -1,5 +1,4 @@
 import { FiActivity, FiCheckSquare, FiLifeBuoy } from "react-icons/fi";
-import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
 import SafetySection from "../components/SafetySection";
 

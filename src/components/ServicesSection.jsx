@@ -62,19 +62,19 @@ export default function ServicesSection() {
     <section
       id="services"
       ref={sectionRef}
-      className="bg-charcoal py-16 text-ink sm:py-20 lg:py-24"
+      className="bg-white py-16 text-navy sm:py-20 lg:py-24"
     >
       <div className="container-x">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow mb-2 font-semibold text-amber reveal">
+            <p className="eyebrow mb-2 font-semibold text-amber-foreground reveal">
               Operational deployment portfolio
             </p>
             <h2 className="text-3xl font-bold uppercase sm:text-4xl reveal">
               Core specialized services
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-6 text-ink-muted reveal">
+          <p className="max-w-md text-sm leading-6 text-slate reveal">
             Industrial equipment and certified transport setups deployed under
             rigorous engineering protocols across maritime, swamp and dryland
             terrain.
@@ -94,37 +94,37 @@ export default function ServicesSection() {
             }) => (
               <article
                 key={number}
-                className="group flex min-h-124 flex-col overflow-hidden bg-navy reveal"
+                className="group flex min-h-124 flex-col overflow-hidden border border-border bg-white transition-shadow duration-300 hover:shadow-lg reveal"
               >
-                <div className="relative h-56 shrink-0 overflow-hidden bg-slate/20">
+                <div className="relative h-56 shrink-0 overflow-hidden bg-white">
                   <img
                     src={image}
                     alt={alt}
                     loading="lazy"
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
                   />
-                  <span className="absolute left-3 top-3 bg-charcoal/90 px-2 py-1 font-mono text-xs uppercase text-ink">
+                  <span                   className="absolute left-3 top-3 border border-border bg-white/95 px-2 py-1 font-mono text-xs uppercase text-navy">
                     Service / {number}
                   </span>
                   {featured && (
-                    <span className="absolute right-0 top-0 bg-amber px-3 py-1 font-mono text-[0.65rem] font-bold uppercase text-amber-foreground">
+                    <span                     className="absolute right-0 top-0 bg-amber px-3 py-1 font-mono text-[0.65rem] font-bold uppercase text-navy">
                       Primary specialty
                     </span>
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <div className="mb-3 flex size-9 items-center justify-center border border-white/10 text-amber">
+                  <div className="mb-3 flex size-9 items-center justify-center border border-border text-amber-foreground">
                     <Icon aria-hidden="true" />
                   </div>
-                  <h3 className="text-xl font-bold uppercase leading-6 transition-colors group-hover:text-amber">
+                  <h3 className="text-xl font-bold leading-6 transition-colors group-hover:text-amber-foreground">
                     {title}
                   </h3>
-                  <p className="mt-3 flex-1 text-sm leading-6 text-ink-muted">
+                  <p className="mt-3 flex-1 text-sm leading-6 text-slate">
                     {description}
                   </p>
                   <Link
                     to="/contact"
-                    className="mt-6 inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase text-amber focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-amber-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
                   >
                     Discuss this service{" "}
                     <FiArrowRight
@@ -138,19 +138,19 @@ export default function ServicesSection() {
           )}
         </div>
 
-        <div className="mt-5 flex flex-col gap-4 border-l-2 border-amber bg-white/5 p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-5 flex flex-col gap-4 border-y border-border py-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-mono text-xs font-semibold uppercase text-amber">
+            <p className="font-mono text-xs font-semibold uppercase text-amber-foreground">
               Additional logistical support
             </p>
-            <p className="mt-1 max-w-3xl text-sm leading-6 text-ink-muted">
+            <p className="mt-1 max-w-3xl text-sm leading-6 text-slate">
               Field mechanical maintenance, certified rigging crews, quayside
               marshaling and staging-yard storage can be mobilized on request.
             </p>
           </div>
           <Link
             to="/contact"
-            className="inline-flex shrink-0 items-center gap-2 font-mono text-xs font-semibold uppercase text-ink hover:text-amber"
+            className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-navy hover:text-amber-foreground"
           >
             Submit fleet requirements <FiArrowRight aria-hidden="true" />
           </Link>

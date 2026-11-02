@@ -33,14 +33,14 @@ const footerGroups = [
 
 export default function Footer() {
   return (
-    <footer className="bg-navy text-ink">
+    <footer className="bg-white text-navy">
       <div className="container-x py-12 sm:py-14">
-        <div className="grid gap-10 border-b border-white/10 pb-10 md:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-10 border-b border-border pb-10 md:grid-cols-2 xl:grid-cols-5">
           <div className="space-y-5 xl:col-span-2">
             <Link
               to="/"
               aria-label="Kobbs Global home"
-              className="inline-flex rounded-sm bg-white p-1.5"
+              className="inline-flex rounded-sm p-1.5"
             >
               <img
                 src={logo}
@@ -48,26 +48,26 @@ export default function Footer() {
                 className="h-12 w-auto object-contain"
               />
             </Link>
-            <p className="max-w-md text-sm leading-6 text-ink-muted">
+            <p             className="max-w-md text-sm leading-6 text-slate">
               Nigerian industrial haulage, heavy-lift logistics, rig-move
               operations and oilfield equipment leasing from the Niger Delta
               energy corridor.
             </p>
-            <div className="border-l-2 border-amber bg-charcoal p-4 font-mono text-xs leading-5 text-ink-muted">
-              <p className="font-semibold uppercase text-amber">
+            <div className="border-l-2 border-amber py-2 pl-4 font-mono text-xs leading-5 text-slate">
+              <p className="font-semibold uppercase text-amber-foreground">
                 Registered business address
               </p>
               <p className="mt-1">Ambassador Nne Furo Kurubo,</p>
               <p>Model Secondary School Road, Onne,</p>
               <p>Port Harcourt, Rivers State.</p>
               <a
-                className="mt-2 inline-block text-ink hover:text-amber"
+                className="mt-2 inline-block text-navy hover:text-amber-foreground"
                 href="tel:+2348037080258"
               >
                 +234 (0) 803 708 0258
               </a>
               <a
-                className="mt-1 inline-block text-ink hover:text-amber"
+                className="mt-1 inline-block text-navy hover:text-amber-foreground"
                 href="mailto:kobbs@kobbsglobal.com"
               >
                 kobbs@kobbsglobal.com
@@ -77,7 +77,7 @@ export default function Footer() {
 
           {footerGroups.map(({ title, links }) => (
             <div key={title}>
-              <h2 className="mb-4 font-mono text-xs font-semibold uppercase text-amber">
+              <h2 className="mb-4 font-mono text-xs font-semibold uppercase text-amber-foreground">
                 {title}
               </h2>
               <nav
@@ -88,7 +88,7 @@ export default function Footer() {
                   <Link
                     key={label}
                     to={href}
-                    className="text-sm text-ink-muted transition-colors hover:text-amber"
+                    className="text-sm text-slate transition-colors hover:text-amber-foreground"
                   >
                     {label}
                   </Link>
@@ -98,9 +98,9 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-6 flex flex-col gap-3 border border-white/5 bg-charcoal px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-ink-muted">
-            <span className="font-mono text-xs font-semibold uppercase text-amber">
+        <div className="mt-6 flex flex-col gap-3 border-y border-border py-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-slate">
+            <span className="font-mono text-xs font-semibold uppercase text-amber-foreground">
               Safety-first mandate
             </span>
             <span className="ml-3">
@@ -108,7 +108,7 @@ export default function Footer() {
             </span>
           </p>
           <Link
-            className="shrink-0 font-mono text-xs uppercase text-ink-muted hover:text-amber"
+            className="shrink-0 font-mono text-xs uppercase text-navy hover:text-amber-foreground"
             to="/contact"
           >
             Contact Kobbs Global

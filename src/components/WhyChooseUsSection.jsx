@@ -37,16 +37,16 @@ const strengths = [
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="bg-background py-16 text-foreground sm:py-20 lg:py-24">
+    <section className="bg-white py-16 text-navy sm:py-20 lg:py-24">
       <div className="container-x">
         <div className="mb-10 max-w-2xl">
-          <p className="eyebrow mb-2 font-semibold text-navy">
+          <p className="eyebrow mb-2 font-semibold text-amber-foreground">
             Operational differentiation
           </p>
           <h2 className="text-3xl font-bold uppercase leading-tight sm:text-4xl">
             Why industrial operators choose Kobbs Global
           </h2>
-          <p className="mt-4 text-base leading-7 text-foreground/70">
+          <p className="mt-4 text-base leading-7 text-slate">
             Built on direct experience in high-consequence environments where
             safety and logistical readiness matter.
           </p>
@@ -56,23 +56,23 @@ export default function WhyChooseUsSection() {
             ({ icon: Icon, number, title, description, label }) => (
               <article
                 key={number}
-                className="flex min-h-72 flex-col justify-between border border-navy/10 bg-white p-6 shadow-sm"
+                className="flex min-h-72 flex-col justify-between border border-border bg-white p-6 transition-shadow hover:shadow-md"
               >
                 <div>
-                  <div className="mb-5 flex size-11 items-center justify-center bg-navy text-amber">
+                  <div className="mb-5 flex size-11 items-center justify-center border border-amber text-amber-foreground">
                     <Icon aria-hidden="true" className="size-5" />
                   </div>
                   <p className="font-mono text-xs uppercase text-slate">
                     Pillar {number}
                   </p>
-                  <h3 className="mt-2 text-xl font-bold uppercase leading-6">
+                  <h3 className="mt-2 text-xl font-bold leading-6">
                     {title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-foreground/70">
+                  <p className="mt-3 text-sm leading-6 text-slate">
                     {description}
                   </p>
                 </div>
-                <p className="mt-5 border-t border-navy/10 pt-3 font-mono text-xs font-semibold uppercase text-navy">
+                <p className="mt-5 border-t border-border pt-3 font-mono text-xs font-semibold uppercase text-navy">
                   {label}
                 </p>
               </article>

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { gsap } from "gsap";
-import logo from "../assets/KOBBS_Global_Services_Logo-removebg-preview.png";
+import logo from "../assets/logo1.png";
 import { FiArrowUpRight } from "react-icons/fi";
 
 const navItems = [
@@ -90,18 +90,22 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 border-t-4 border-amber bg-navy/95 text-ink shadow-lg backdrop-blur-sm"
+      className="fixed inset-x-0 top-0 z-50 border-b border-border bg-white text-navy shadow-sm"
     >
       <nav
         aria-label="Main navigation"
-        className="container-x flex min-h-20 items-center justify-between gap-4 py-3"
+        className="container-x flex min-h-20 items-center justify-between gap-4 py-2"
       >
         <Link
           to="/"
           aria-label="Kobbs Global home"
-          className="inline-flex shrink-0 items-center rounded-sm p-1.5"
+          className="inline-flex shrink-0 items-center rounded-sm p-1"
         >
-          <img src={logo} alt="Kobbs Global logo" className="" />
+          <img
+            src={logo}
+            alt="Kobbs Global logo"
+            className="h-12 w-auto max-w-[11rem] object-contain sm:h-14 sm:max-w-none"
+          />
         </Link>
 
         <div ref={navRef} className="hidden items-center gap-1 lg:flex">
@@ -112,10 +116,10 @@ export default function Navbar() {
               end={href === "/"}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `rounded-sm px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber ${
+                `rounded-sm border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber ${
                   isActive
-                    ? "bg-white/5 text-ink"
-                    : "text-ink-muted hover:bg-white/5 hover:text-ink"
+                    ? "border-b-2 border-amber text-navy"
+                    : "text-slate hover:text-navy"
                 }`
               }
             >
@@ -126,7 +130,7 @@ export default function Navbar() {
 
         <Link
           to="/contact"
-          className="hidden shrink-0 items-center gap-2 rounded-sm bg-amber px-5 py-3 text-sm font-bold text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink lg:inline-flex"
+          className="hidden shrink-0 items-center gap-2 border border-amber bg-white px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber lg:inline-flex"
         >
           Request a Quote{" "}
           <FiArrowUpRight aria-hidden="true" className="size-4" />
@@ -140,7 +144,7 @@ export default function Navbar() {
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          className="inline-flex size-11 items-center justify-center rounded-sm border border-ink-line text-ink transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber lg:hidden"
+          className="inline-flex size-11 items-center justify-center rounded-sm border border-border text-navy transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber lg:hidden"
         >
           {menuOpen ? (
             <svg
@@ -178,7 +182,7 @@ export default function Navbar() {
         ref={mobileNavRef}
         id="mobile-navigation"
         aria-hidden={!menuOpen}
-        className="hidden overflow-hidden border-t border-ink-line bg-navy px-5 pb-5 pt-2 lg:hidden"
+        className="hidden overflow-hidden border-t border-border bg-white px-5 pb-5 pt-2 lg:hidden"
       >
         <nav
           aria-label="Mobile navigation"
@@ -191,8 +195,8 @@ export default function Navbar() {
               end={href === "/"}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `border-b border-ink-line py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-amber ${
-                  isActive ? "text-amber" : "text-ink-muted hover:text-amber"
+                `border-b border-border py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-amber ${
+                  isActive ? "text-amber-foreground" : "text-navy hover:text-amber-foreground"
                 }`
               }
             >
@@ -202,7 +206,7 @@ export default function Navbar() {
           <Link
             to="/contact"
             onClick={() => setMenuOpen(false)}
-            className="mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-amber px-5 py-3 text-sm font-bold text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+            className="mt-4 inline-flex items-center justify-center gap-2 border border-amber bg-white px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
           >
             Request a Quote{" "}
             <FiArrowUpRight aria-hidden="true" className="size-4" />

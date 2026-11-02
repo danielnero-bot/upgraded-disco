@@ -2,6 +2,7 @@ import { FiArrowRight, FiCompass, FiShield, FiTruck } from "react-icons/fi";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import useScrollReveal from "../hooks/useScrollReveal";
+import heroImage from "../assets/thumbnail.jpg";
 
 const operationalFacts = [
   {
@@ -33,70 +34,67 @@ export default function HeroSection() {
     <section
       id="home"
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-navy text-ink"
+      className="bg-white pb-14 pt-24 text-navy sm:pb-20 sm:pt-28 lg:pb-24 lg:pt-32"
     >
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-20 bg-cover bg-center opacity-30"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?auto=format&fit=crop&w=2200&q=85')",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-linear-to-r from-navy via-navy/90 to-navy/45"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-linear-to-t from-charcoal/90 via-transparent to-navy/35"
-      />
-
-      <div className="container-x pb-10 pt-20 sm:pb-14 sm:pt-28 lg:pb-16 lg:pt-32">
-        <div className="mb-6 flex flex-wrap items-center gap-3 text-xs font-mono uppercase text-ink-muted">
-          <span className="bg-amber/15 px-2 py-1 font-semibold text-amber">
-            Sec_01 / Corridor directive
-          </span>
-          <span className="hidden h-px w-10 bg-amber/50 sm:block" />
-          <span>Port Harcourt / Onne Hub / Gulf of Guinea</span>
-        </div>
-
-        <div className="max-w-4xl">
-          <h1 className="max-w-3xl font-display text-5xl font-bold uppercase leading-[1.02] sm:text-6xl lg:text-7xl reveal">
-            Moving industry <span className="text-amber">forward.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-muted sm:text-xl reveal">
-            Haulage, heavy-lift and industrial transportation solutions for
-            demanding projects across Nigeria and the Gulf of Guinea energy
-            corridor.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="inline-flex min-h-12 items-center gap-3 bg-amber px-6 py-3 font-mono text-sm font-bold uppercase text-amber-foreground transition-colors hover:bg-amber/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-            >
-              Request a quote <FiArrowRight aria-hidden="true" />
-            </Link>
-            <Link
-              to="/services"
-              className="inline-flex min-h-12 items-center gap-3 border border-white/15 bg-charcoal/60 px-5 py-3 font-mono text-sm font-semibold uppercase text-ink transition-colors hover:border-amber/50 hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
-            >
-              Explore our services <FiArrowRight aria-hidden="true" />
-            </Link>
+      <div className="container-x">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-6">
+            <div className="mb-6 flex flex-wrap items-center gap-3 font-mono text-xs uppercase text-slate reveal">
+              <span className="h-0.5 w-8 bg-amber" />
+              Port Harcourt / Onne / Nigeria
+            </div>
+            <h1 className="max-w-3xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl reveal">
+              Moving industry{" "}
+              <span className="text-amber-foreground">forward.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-slate sm:text-lg sm:leading-8 reveal">
+              Haulage, heavy-lift and industrial transportation solutions for
+              demanding projects across Nigeria and the Gulf of Guinea energy
+              corridor.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex min-h-12 items-center gap-3 bg-amber px-6 py-3 text-sm font-bold text-navy transition-colors hover:bg-amber/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+              >
+                Request a quote <FiArrowRight aria-hidden="true" />
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex min-h-12 items-center gap-3 border border-border bg-white px-5 py-3 text-sm font-semibold text-navy transition-colors hover:border-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+              >
+                Explore our services <FiArrowRight aria-hidden="true" />
+              </Link>
+            </div>
           </div>
+
+          <figure className="relative min-h-72 overflow-hidden sm:min-h-96 lg:col-span-6 lg:min-h-[34rem] reveal">
+            <img
+              src={heroImage}
+              alt="Industrial cargo prepared for lowbed road transportation"
+              className="absolute inset-0 size-full object-cover"
+              fetchPriority="high"
+            />
+            <figcaption className="absolute bottom-4 left-4 border-l-2 border-amber bg-white/95 px-4 py-3 text-xs text-navy shadow-sm sm:bottom-6 sm:left-6">
+              Industrial transport & logistics
+            </figcaption>
+          </figure>
         </div>
 
-        <div className="mt-16 grid gap-px border border-white/10 bg-white/10 md:grid-cols-3">
+        <div className="mt-12 grid divide-y divide-border border-y border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {operationalFacts.map(({ icon: Icon, label, value, detail }) => (
-            <div key={label} className="bg-charcoal/90 p-5 sm:p-6 reveal">
-              <div className="mb-3 flex items-center gap-2 font-mono text-xs font-semibold uppercase text-amber">
+            <div
+              key={label}
+              className="py-5 sm:px-5 sm:py-6 first:sm:pl-0 last:sm:pr-0 reveal"
+            >
+              <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-amber-foreground">
                 <Icon aria-hidden="true" />
                 {label}
               </div>
-              <p className="text-sm font-semibold leading-6 text-ink">
+              <p className="text-sm font-semibold leading-6 text-navy">
                 {value}
               </p>
-              <p className="mt-1 text-xs leading-5 text-ink-muted">{detail}</p>
+              <p className="mt-1 text-xs leading-5 text-slate">{detail}</p>
             </div>
           ))}
         </div>

@@ -1,20 +1,18 @@
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"] ,
+export default {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        navy: "#101B2B",
-        charcoal: "#171B20",
+        navy: "#17212B",
         amber: "#F2A900",
-        slate: "#667085",
-        warm: "#F5F4F0",
+        slate: "#64748B",
+        warm: "#FFFFFF",
       },
       fontFamily: {
-        display: ["'Montserrat', sans-serif"],
-        body: ["'Inter', sans-serif"]
-      }
-    }
+        display: ["Archivo", "system-ui", "sans-serif"],
+        body: ["IBM Plex Sans", "system-ui", "sans-serif"],
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
-
