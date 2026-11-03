@@ -1,83 +1,104 @@
 import { FiActivity, FiCheckSquare, FiLifeBuoy } from "react-icons/fi";
+import { useRef } from "react";
 import PageIntro from "../components/PageIntro";
 import SafetySection from "../components/SafetySection";
-import pic from "../assets/OIP (1).webp";
+import liftImage from "../assets/OIP (1).webp";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const safetyPhases = [
   {
     icon: FiCheckSquare,
-    title: "Before mobilization",
+    title: "Before Mobilization",
     items: [
-      "Review scope and route constraints",
-      "Confirm vehicle and equipment readiness",
-      "Brief crews on task-specific hazards",
+      "Review cargo weight distribution & bridge clearance logs",
+      "Perform certified pre-trip vehicle & rigging inspections",
+      "Brief operators & drivers on assignment-specific risks",
     ],
   },
   {
     icon: FiActivity,
-    title: "During operations",
+    title: "During Operations",
     items: [
-      "Follow journey and lifting controls",
-      "Maintain communication with the team",
-      "Escalate changing site conditions",
+      "Strict enforcement of speed limits & rest intervals",
+      "Real-time route communication with escort pilot vehicles",
+      "Immediate pause protocol for sudden terrain or weather hazards",
     ],
   },
   {
     icon: FiLifeBuoy,
-    title: "Prepared response",
+    title: "Prepared Response & Closeout",
     items: [
-      "Identify emergency contacts and muster points",
-      "Keep response arrangements clear to crews",
-      "Review lessons after the assignment",
+      "Designated emergency muster points & rapid escalation lines",
+      "Comprehensive offloading & equipment de-rigging audits",
+      "Post-assignment safety debrief & operational log archival",
     ],
   },
 ];
 
 export default function SafetyPage() {
+  const pageRef = useRef(null);
+
+  useScrollReveal(pageRef, { stagger: 0.1, y: 15 });
+
   return (
-    <>
+    <main ref={pageRef} className="bg-white">
       <PageIntro
-        eyebrow="HSE & safety"
-        title="Safety is part of every operational decision."
-        description="Our approach is built around planning, equipment integrity, crew readiness and documented controls for transport and lifting work."
-        image= {pic}
-></PageIntro>      <SafetySection />
-      <section className="bg-background py-16 text-foreground sm:py-20">
+        eyebrow="HSE & Safety Governance"
+        title="Safety is woven into every operational decision."
+        description="Our policy centers on proactive risk assessment, strict mechanical integrity, trained personnel, and documented controls across all transit and lifting operations."
+        image={liftImage}
+        imageAlt="Industrial lifting equipment prepared for a controlled operation"
+      />
+      <SafetySection />
+
+      {/* Safety Cycle Section */}
+      <section className="bg-white py-16 sm:py-20 border-t border-slate-100">
         <div className="container-x">
-          <p className="eyebrow mb-2 font-semibold text-navy">
-            Operational safeguards
-          </p>
-          <h2 className="mb-8 max-w-2xl text-3xl font-bold uppercase">
-            A safety cycle from planning through closeout
-          </h2>
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="mb-12 max-w-2xl reveal">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
+              Operational Safeguards
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              A safety lifecycle from planning through demobilization
+            </h2>
+            <p className="mt-3 text-base text-slate-500">
+              Clear accountability and technical control parameters maintained from the moment cargo is surveyed until final handover.
+            </p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
             {safetyPhases.map(({ icon: Icon, title, items }, index) => (
               <article
                 key={title}
-                className="border border-navy/10 bg-white p-6"
+                className="group flex flex-col justify-between rounded-xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-100 hover:shadow-lg hover:shadow-blue-50/50 reveal"
               >
-                <div className="mb-4 flex items-center justify-between">
-                  <Icon aria-hidden="true" className="size-6 text-navy" />
-                  <span className="font-mono text-xs text-slate">
-                    PHASE / 0{index + 1}
-                  </span>
+                <div>
+                  <div className="mb-6 flex items-center justify-between border-b border-slate-100 pb-4">
+                    <div className="flex size-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      <Icon aria-hidden="true" className="size-5" />
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Phase 0{index + 1}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">{title}</h3>
+                  <ul className="mt-4 space-y-3">
+                    {items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-500"
+                      >
+                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-blue-600" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="text-xl font-bold uppercase">{title}</h3>
-                <ul className="mt-4 space-y-3">
-                  {items.map((item) => (
-                    <li
-                      key={item}
-                      className="border-t border-navy/10 pt-3 text-sm leading-5 text-foreground/70"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </article>
             ))}
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

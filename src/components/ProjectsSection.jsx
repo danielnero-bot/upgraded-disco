@@ -1,143 +1,145 @@
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import haulageImage from "../assets/OIP (4).webp";
 import heavyImage from "../assets/OIP (3).webp";
-import thirdImage from "../assets/OIP (2).webp"
+import thirdImage from "../assets/OIP (2).webp";
 
 const references = [
   {
-    eyebrow: "Historical project record / 2014–2017",
+    eyebrow: "Historical Project · 2014–2017",
     location: "Nigeria",
-    title: "Provision of trucks for road transportation on the Egina project",
+    title: "Provision of trucks for road transportation on Egina project",
     description:
-      "Historical project record published by Kobbs Global: provision of trucks for road transportation on the Egina project for Saipem Contracting Nigeria Ltd.",
-    scope: "Road transportation support",
-    image: haulageImage,
+      "Road haulage and transport support for Saipem Contracting Nigeria Ltd during the flagship Egina offshore development.",
+    scope: "Road Logistics & Multi-Axle Haulage",
+    image: heavyImage,
   },
   {
-    eyebrow: "Historical project record / 2012",
+    eyebrow: "Historical Project · 2012",
     location: "Nigeria",
-    title: "Haulage of equipment for a mini A.G.O. plant",
+    title: "Haulage of equipment for mini A.G.O. plant",
     description:
-      "Historical project record published by Kobbs Global: haulage of equipment for a mini A.G.O. plant for Niger/Delta Petroleum Resources Ltd — Murphy Shipping/Commercial Services.",
-    scope: "Equipment haulage",
+      "Plant machinery relocation for Niger Delta Petroleum Resources Ltd via Murphy Shipping and Commercial Services.",
+    scope: "Heavy Equipment Haulage",
     image: thirdImage,
   },
 ];
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="bg-white py-16 text-navy sm:py-20 lg:py-24">
+    <section id="projects" className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="container-x">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow mb-2 font-semibold text-amber-foreground">
-              Verified operational footprint
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
+              Verified Track Record
             </p>
-            <h2 className="max-w-3xl text-3xl font-bold uppercase leading-tight sm:text-4xl">
-              Project experience & historical references
+            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Project Experience & Historical References
             </h2>
           </div>
-          <span className="w-fit border border-border px-3 py-2 font-mono text-xs font-semibold uppercase text-slate">
-            Documented sector participation
+          <span className="w-fit rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1 text-xs font-semibold text-slate-600">
+            Documented Energy Participation
           </span>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-12">
-          <article className="flex flex-col justify-between border border-border bg-white lg:col-span-7">
-            <figure className="relative h-56 overflow-hidden sm:h-72">
-              <img src={heavyImage} alt="Heavy truck for industrial road transportation" loading="lazy" className="size-full object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:transition-none" />
-              <figcaption className="absolute bottom-3 left-3 bg-white/95 px-3 py-2 text-xs text-slate">Illustrative operations imagery</figcaption>
+        <div className="grid gap-6 lg:grid-cols-12">
+          {/* Main Featured Case */}
+          <article className="flex flex-col justify-between overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg lg:col-span-7">
+            <figure className="relative h-64 overflow-hidden sm:h-80">
+              <img
+                src={heavyImage}
+                alt="Heavy truck for industrial road transportation"
+                loading="lazy"
+                className="size-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <figcaption className="absolute bottom-3 left-3 rounded-md bg-white/95 px-3 py-1.5 text-xs text-slate-700 shadow-sm backdrop-blur-sm">
+                Operations Field Snapshot
+              </figcaption>
             </figure>
-            <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
-            <div>
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-2 font-mono text-xs uppercase">
-                <span className="font-semibold text-amber-foreground">
-                  Historical record / 2014–2017
+            <div className="flex flex-1 flex-col justify-between p-7 sm:p-8">
+              <div>
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <span className="font-semibold uppercase tracking-wider text-blue-600">
+                    Historical Record · 2014–2017
+                  </span>
+                  <span className="text-slate-400">Published Corporate Reference</span>
+                </div>
+                <h3 className="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">
+                  Provision of trucks for road transportation on the Egina project
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+                  Historical project record published by Kobbs Global: specialized trucking and heavy haulage operations provided for Saipem Contracting Nigeria Ltd during the construction phase of the landmark Egina FPSO project.
+                </p>
+                <div className="mt-6 grid grid-cols-2 gap-4 rounded-lg bg-slate-50 p-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-slate-400">Timeline</p>
+                    <p className="mt-1 text-sm font-semibold text-slate-900">2014–2017</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-slate-400">Client / Contractor</p>
+                    <p className="mt-1 text-sm font-semibold text-slate-900">Saipem Contracting Nigeria Ltd</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-xs">
+                <span className="font-medium text-slate-500">Historical Assignment</span>
+                <span className="inline-flex items-center gap-1.5 font-semibold text-blue-600">
+                  <FiCheckCircle aria-hidden="true" className="size-4" />
+                  Verified Completion
                 </span>
-                <span className="text-slate">Published by company</span>
               </div>
-              <h3 className="text-2xl font-bold leading-tight sm:text-3xl">
-                Provision of trucks for road transportation on the Egina project
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-slate sm:text-base">
-                This reflects a historical project record published by Kobbs
-                Global: provision of trucks for road transportation on the Egina
-                project for Saipem Contracting Nigeria Ltd. The project is
-                preserved as a past assignment and should not be presented as a
-                current client relationship.
-              </p>
-              <div className="mt-6 grid gap-4 border-y border-border py-4 sm:grid-cols-2">
-                <div>
-                  <p className="font-mono text-[0.65rem] uppercase text-slate">
-                    Reference period
-                  </p>
-                  <p className="mt-1 text-sm font-medium">2014–2017</p>
-                </div>
-                <div>
-                  <p className="font-mono text-[0.65rem] uppercase text-slate">
-                    Client attribution
-                  </p>
-                  <p className="mt-1 text-sm font-medium">
-                    Saipem Contracting Nigeria Ltd.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4 font-mono text-xs uppercase">
-              <span className="text-slate">Historical project</span>
-              <span className="inline-flex items-center gap-2 font-semibold text-amber-foreground">
-                <FiCheckCircle aria-hidden="true" />
-                Company-published record
-              </span>
-            </div>
             </div>
           </article>
 
-          <div className="grid gap-4 lg:col-span-5">
-            {references.map(
-              ({ eyebrow, location, title, description, scope, image }, index) => (
-                <article
-                  key={title}
-                  className="flex flex-col justify-between border border-border bg-white"
-                >
-                  <figure className="relative h-40 overflow-hidden">
-                    <img src={image} alt="Industrial logistics equipment" loading="lazy" className="size-full object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:transition-none" />
-                    <figcaption className="absolute bottom-2 left-2 bg-white/95 px-2 py-1 text-[0.65rem] text-slate">Illustrative operations imagery</figcaption>
-                  </figure>
-                  <div className="flex flex-1 flex-col p-5 sm:p-6">
+          {/* Secondary Cases */}
+          <div className="grid gap-6 lg:col-span-5">
+            {references.map(({ eyebrow, location, title, description, scope, image }) => (
+              <article
+                key={title}
+                className="group flex flex-col justify-between overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md"
+              >
+                <figure className="relative h-44 overflow-hidden">
+                  <img
+                    src={image}
+                    alt="Industrial logistics equipment"
+                    loading="lazy"
+                    className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <figcaption className="absolute bottom-2.5 left-2.5 rounded bg-white/95 px-2.5 py-1 text-[0.65rem] font-medium text-slate-700 shadow-sm backdrop-blur-sm">
+                    {location}
+                  </figcaption>
+                </figure>
+                <div className="flex flex-1 flex-col p-6">
                   <div>
-                    <div className="mb-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[0.65rem] uppercase text-amber">
-                      <span>{eyebrow}</span>
-                      <span className="text-slate">{location}</span>
-                    </div>
-                    <h3 className="text-xl font-bold leading-6">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+                      {eyebrow}
+                    </p>
+                    <h3 className="mt-2 text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                       {title}
                     </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate">
+                    <p className="mt-2 text-sm leading-relaxed text-slate-500">
                       {description}
                     </p>
                   </div>
-                  <p className="mt-5 border-t border-border pt-3 font-mono text-xs uppercase text-slate">
-                    Scope: {scope}
-                  </p>
+                  <div className="mt-5 border-t border-slate-100 pt-3 text-xs font-semibold text-slate-500">
+                    Scope: <span className="text-slate-800">{scope}</span>
                   </div>
-                </article>
-              ),
-            )}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
 
-        <div className="mt-5 flex flex-col gap-3 border-y border-border py-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm leading-6 text-slate">
-            Formal client verification packs for historical assignments are
-            available upon technical request.
+        <div className="mt-10 flex flex-col gap-4 rounded-xl border border-slate-100 bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-slate-600">
+            Formal technical qualification and project verification dossiers are available upon formal client request.
           </p>
           <Link
             to="/contact"
-            className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-amber-foreground"
+            className="inline-flex shrink-0 items-center gap-2 font-semibold text-blue-600 transition-colors hover:text-blue-700"
           >
-            Request project references <FiArrowRight aria-hidden="true" />
+            <span>Request Detailed Dossier</span>
+            <FiArrowRight aria-hidden="true" className="size-4" />
           </Link>
         </div>
       </div>

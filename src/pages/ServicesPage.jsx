@@ -1,4 +1,4 @@
-import { FiClipboard, FiTool, FiTruck } from "react-icons/fi";
+import { FiClipboard, FiTool, FiTruck, FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
 import ServicesSection from "../components/ServicesSection";
@@ -7,68 +7,80 @@ import img from "../assets/thumbnail (6).jpg";
 const deliverySteps = [
   {
     icon: FiClipboard,
-    title: "Scope & assess",
-    text: "Share cargo dimensions, weight, pickup and delivery points, timing and site constraints.",
+    title: "Scope & Assess",
+    text: "Review cargo dimensions, tonnages, origin and destination points, timing windows, and specific site constraints.",
   },
   {
     icon: FiTool,
-    title: "Plan & prepare",
-    text: "Review route feasibility, equipment configuration, lift requirements and journey controls.",
+    title: "Plan & Prepare",
+    text: "Conduct civil route surveys, bridge load verifications, crane capacity studies, and journey management protocols.",
   },
   {
     icon: FiTruck,
-    title: "Mobilize & deliver",
-    text: "Coordinate the people, fleet and field support needed to execute the movement.",
+    title: "Mobilize & Deliver",
+    text: "Deploy certified operators, prime movers, pilot escorts, and technical field supervisors to execute safe transport.",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <>
+    <div className="bg-white">
       <PageIntro
-        eyebrow="Core services"
+        eyebrow="Core Services"
         title="Specialized transport and lifting for demanding operations."
-        description="Explore haulage, heavy lift, rig moves and equipment leasing for industrial projects across Nigeria."
-        image= {img}
+        description="Comprehensive haulage, engineered heavy lift, drilling rig relocation, and equipment leasing for high-stakes industrial projects across Nigeria."
+        image={img}
       />
       <ServicesSection />
-      <section className="bg-background py-16 text-foreground sm:py-20">
+      
+      {/* Workflow Section */}
+      <section className="bg-white py-16 sm:py-20 border-t border-slate-100">
         <div className="container-x">
-          <div className="mb-8 max-w-2xl">
-            <p className="eyebrow mb-2 font-semibold text-navy">
-              From brief to mobilization
+          <div className="mb-12 max-w-2xl">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
+              Execution Process
             </p>
-            <h2 className="text-3xl font-bold uppercase">
-              A clear path to deployment
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              From initial brief to mobilization
             </h2>
+            <p className="mt-3 text-base text-slate-500">
+              A disciplined, three-stage workflow ensuring seamless mobilization and risk-free execution.
+            </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          
+          <div className="grid gap-6 md:grid-cols-3">
             {deliverySteps.map(({ icon: Icon, title, text }, index) => (
               <article
                 key={title}
-                className="border border-navy/10 bg-white p-6"
+                className="group rounded-xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-100 hover:shadow-lg hover:shadow-blue-50/50"
               >
-                <div className="mb-5 flex items-center justify-between">
-                  <Icon aria-hidden="true" className="size-6 text-navy" />
-                  <span className="font-mono text-xs text-slate">
-                    STEP / 0{index + 1}
+                <div className="mb-6 flex items-center justify-between">
+                  <div className="flex size-12 items-center justify-center rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <Icon aria-hidden="true" className="size-6" />
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    Step 0{index + 1}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold uppercase">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-foreground/70">
+                <h3 className="text-lg font-bold text-slate-900">{title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-slate-500">
                   {text}
                 </p>
               </article>
             ))}
           </div>
-          <Link
-            to="/contact"
-            className="mt-7 inline-flex items-center gap-2 bg-amber px-5 py-3 font-mono text-xs font-bold uppercase text-amber-foreground hover:bg-amber/90"
-          >
-            Discuss a requirement
-          </Link>
+
+          <div className="mt-10">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.98]"
+            >
+              <span>Discuss a Requirement</span>
+              <FiArrowRight aria-hidden="true" className="size-4" />
+            </Link>
+          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

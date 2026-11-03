@@ -16,150 +16,150 @@ const operatingPrinciples = [
   {
     icon: FiClipboard,
     number: "01",
-    title: "Plan before mobilization",
+    title: "Plan Before Mobilization",
     description:
-      "Start with the cargo, route and destination. Build a movement plan around access, timing and operational constraints.",
+      "Start with the cargo geometry, route survey, and destination. Build every movement plan around road clearances, bridge capacities, and timing.",
   },
   {
     icon: FiTruck,
     number: "02",
-    title: "Match equipment to the work",
+    title: "Match Equipment to the Work",
     description:
-      "Coordinate prime movers, lowbeds, cranes and field support to suit the specific transport or lifting requirement.",
+      "Pair prime movers, multi-axle lowbeds, rough-terrain cranes, and pilot escorts to suit the unique weight and terrain parameters.",
   },
   {
     icon: FiShield,
     number: "03",
-    title: "Keep safety in the plan",
+    title: "Keep Safety Non-Negotiable",
     description:
-      "Use clear responsibilities, equipment checks and journey controls throughout the assignment.",
+      "Maintain clear task responsibilities, daily toolbox briefings, and journey management checkpoints across every transit phase.",
   },
 ];
 
 const clientTypes = [
-  "Energy operators",
-  "Engineering contractors",
-  "Fabrication yards",
-  "Infrastructure developers",
+  "Energy Operators",
+  "Engineering Contractors (EPC)",
+  "Heavy Fabrication Yards",
+  "Infrastructure Developers",
+  "Drilling Services Companies",
 ];
 
 export default function AboutPage() {
   const pageRef = useRef(null);
 
-  useScrollReveal(pageRef, { stagger: 0.12 });
+  useScrollReveal(pageRef, { stagger: 0.1 });
 
   return (
-    <div ref={pageRef}>
+    <div ref={pageRef} className="bg-white">
       <PageIntro
         eyebrow="About Kobbs Global"
-        title="Built around the realities of industrial movement."
-        description="Established in 1997, Kobbs Global Services Nigeria Limited supports haulage, heavy-lift, rig-move and equipment-leasing operations across oil and gas, construction and energy projects."
+        title="Built around the demanding realities of industrial movement."
+        description="Established in 1997, Kobbs Global Services Nigeria Limited delivers specialized haulage, heavy-lift craneage, rig-move logistics, and equipment leasing across Nigeria's energy corridor."
         image={pict}
         className="reveal"
       />
 
-      <section className="bg-background py-14 text-foreground sm:py-20 reveal">
-        <div className="container-x grid gap-8 lg:grid-cols-12 lg:items-center">
+      {/* Story & Operating Base */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="container-x grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
-            <p className="eyebrow mb-3 font-semibold text-navy reveal">
-              Industrial logistics from the Niger Delta
-            </p>
-            <h2 className="max-w-xl text-3xl font-bold uppercase leading-tight sm:text-4xl reveal">
+            <div className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
+              <span className="size-1.5 rounded-full bg-blue-600" />
+              Niger Delta Operations
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
               One coordinated team for complex cargo moves.
             </h2>
-            <div className="mt-5 max-w-2xl space-y-4 text-base leading-7 text-foreground/75 reveal">
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-slate-600">
               <p>
-                Kobbs Global Services Nigeria Limited was established in 1997
-                and has operated across Nigeria’s oil and gas, construction and
-                energy sectors, providing haulage, heavy-lift and rig-move
-                support for complex industrial assignments.
+                Kobbs Global Services Nigeria Limited was established in 1997 and has spent over two decades operating across Nigeria’s oil and gas, construction, and maritime infrastructure sectors.
               </p>
               <p>
-                The company’s work is built around disciplined route planning,
-                equipment matching and operational coordination, with an
-                emphasis on safe movement planning and field execution.
+                Our reputation is anchored in disciplined route planning, verified lifting engineering, and end-to-end field coordination. By combining specialized trailers with experienced operations personnel, we safeguard critical assets across challenging terrain.
               </p>
             </div>
           </div>
-          <figure className="relative min-h-72 overflow-hidden border border-border bg-white lg:col-span-6 lg:min-h-104 reveal">
+
+          <figure className="relative min-h-80 overflow-hidden rounded-2xl border border-slate-100 shadow-xl shadow-slate-100/60 lg:col-span-6 lg:min-h-[28rem] group">
             <img
               src={pic}
               alt="Cargo cranes at a working industrial port"
-              className="absolute inset-0 size-full object-cover"
+              className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
             />
-            <figcaption className="absolute inset-x-0 bottom-0 border-t border-border bg-white/95 px-5 py-4 text-navy sm:px-7 sm:py-5">
-              <p className="font-mono text-xs font-semibold uppercase text-amber-foreground">
-                Regional operating base
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+            <figcaption className="absolute bottom-5 left-5 right-5 rounded-xl border border-white/20 bg-white/95 p-4 shadow-lg backdrop-blur-sm sm:p-5">
+              <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+                Regional Operating Base
               </p>
-              <p className="mt-1 flex items-start gap-2 text-sm leading-6 sm:text-base">
+              <p className="mt-1 flex items-start gap-2 text-sm font-medium text-slate-800">
                 <FiMapPin
                   aria-hidden="true"
-                  className="mt-1 shrink-0 text-amber-foreground"
+                  className="mt-1 shrink-0 text-blue-600"
                 />
-                Ambassador Nne Furo Kurubo, Model Secondary School Road, Onne,
-                Port Harcourt, Rivers State.
+                Ambassador Nne Furo Kurubo, Model Secondary School Road, Onne, Port Harcourt, Rivers State.
               </p>
             </figcaption>
           </figure>
         </div>
       </section>
 
-      <section className="bg-white py-12 text-navy sm:py-16">
-        <div className="container-x grid gap-6 md:grid-cols-2">
-          <article className="border-t-2 border-amber pt-5">
-            <p className="eyebrow mb-2 font-semibold text-amber-foreground">
-              Our mission
-            </p>
-            <p className="max-w-xl text-lg font-semibold leading-7">
-              Coordinate dependable haulage, heavy-lift and rig-move support
-              for complex industrial operations.
+      {/* Mission & Vision */}
+      <section className="bg-white py-12 sm:py-16 border-y border-slate-100">
+        <div className="container-x grid gap-8 md:grid-cols-2">
+          <article className="rounded-xl border border-slate-100 bg-white p-8 shadow-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+              Our Mission
+            </span>
+            <p className="mt-3 text-xl font-bold leading-relaxed text-slate-900">
+              Provide safe, engineered, and dependable haulage and heavy-lift logistics that protect client assets and accelerate project timelines.
             </p>
           </article>
-          <article className="border-t border-border pt-5">
-            <p className="eyebrow mb-2 font-semibold text-amber-foreground">
-              Our vision
-            </p>
-            <p className="max-w-xl text-lg font-semibold leading-7">
-              Be a trusted Nigerian logistics partner for challenging cargo
-              movements across the energy and infrastructure sectors.
+          <article className="rounded-xl border border-slate-100 bg-white p-8 shadow-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+              Our Vision
+            </span>
+            <p className="mt-3 text-xl font-bold leading-relaxed text-slate-900">
+              To remain the primary indigenous partner of choice for high-consequence transport and equipment operations across West Africa.
             </p>
           </article>
         </div>
       </section>
 
-      <section className="bg-white py-14 text-navy sm:py-20 reveal">
+      {/* Operating Principles */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="container-x">
-          <div className="mb-8 grid gap-4 md:grid-cols-2 md:items-end">
-            <div>
-              <p className="eyebrow mb-2 font-semibold text-amber-foreground reveal">
-                How we work
-              </p>
-              <h2 className="max-w-xl text-3xl font-bold uppercase leading-tight sm:text-4xl reveal">
-                Preparation is part of the service.
-              </h2>
-            </div>
-            <p className="max-w-xl text-sm leading-6 text-slate md:justify-self-end reveal">
-              Each assignment is shaped around its cargo, route and operating
-              environment, with technical coordination and safety considered
-              from the outset.
+          <div className="mb-12 max-w-2xl">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
+              Our Execution Model
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Preparation is part of the service.
+            </h2>
+            <p className="mt-3 text-base text-slate-500">
+              Each mobilization is tailored around cargo weight distribution, bridge clearances, and route hazards to guarantee zero surprises.
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3 reveal">
+          <div className="grid gap-6 md:grid-cols-3">
             {operatingPrinciples.map(
               ({ icon: Icon, number, title, description }) => (
-                <article key={number} className="border border-border bg-white p-5 sm:p-6 reveal">
-                  <div className="mb-8 flex items-center justify-between">
-                    <Icon aria-hidden="true" className="size-6 text-amber-foreground" />
-                    <span className="font-mono text-xs text-slate">
-                      APPROACH / {number}
+                <article
+                  key={number}
+                  className="group rounded-xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-100 hover:shadow-lg hover:shadow-blue-50/50"
+                >
+                  <div className="mb-6 flex items-center justify-between">
+                    <div className="flex size-12 items-center justify-center rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      <Icon aria-hidden="true" className="size-6" />
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Step {number}
                     </span>
                   </div>
-                  <h3 className="max-w-xs text-xl font-bold leading-6 reveal">
+                  <h3 className="text-lg font-bold text-slate-900">
                     {title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate reveal">
+                  <p className="mt-2.5 text-sm leading-relaxed text-slate-500">
                     {description}
                   </p>
                 </article>
@@ -169,21 +169,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-background py-12 text-foreground sm:py-16 reveal">
-        <div className="container-x flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      {/* Sectors Supported */}
+      <section className="bg-white py-14 sm:py-16 border-t border-slate-100">
+        <div className="container-x flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="eyebrow mb-2 font-semibold text-navy reveal">
-              Working together
+            <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+              Sectors Served
             </p>
-            <h2 className="text-2xl font-bold uppercase sm:text-3xl reveal">
-              Supporting teams across the project lifecycle.
+            <h2 className="mt-1 text-2xl font-bold text-slate-900 sm:text-3xl">
+              Supporting teams across project lifecycles.
             </h2>
           </div>
-          <div className="flex flex-wrap gap-2 reveal">
+          <div className="flex flex-wrap gap-2.5">
             {clientTypes.map((clientType) => (
               <span
                 key={clientType}
-                className="border border-navy/15 px-3 py-2 text-sm text-foreground/75"
+                className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
               >
                 {clientType}
               </span>
@@ -192,22 +193,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-12 text-navy sm:py-16 reveal">
-        <div className="container-x border-y border-border py-8">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-            <div className="max-w-2xl">
-              <p className="eyebrow mb-2 font-semibold text-amber-foreground reveal">
-                Start a conversation
-              </p>
-              <h2 className="text-2xl font-bold sm:text-3xl reveal">
+      {/* Bottom CTA */}
+      <section className="bg-white py-14 sm:py-18">
+        <div className="container-x">
+          <div className="flex flex-col gap-6 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/60 to-white p-8 sm:flex-row sm:items-center sm:justify-between sm:p-12 shadow-sm">
+            <div className="max-w-xl">
+              <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+                Start a Conversation
+              </span>
+              <h2 className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
                 Tell us what your operation needs to move.
               </h2>
             </div>
             <Link
               to="/contact"
-              className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 bg-amber px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-amber/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber reveal"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.98]"
             >
-              Contact our team <FiArrowUpRight aria-hidden="true" />
+              <span>Contact Operations Desk</span>
+              <FiArrowUpRight aria-hidden="true" className="size-4" />
             </Link>
           </div>
         </div>

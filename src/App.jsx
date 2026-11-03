@@ -9,8 +9,11 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import CapabilitiesSection from "./components/CapabilitiesSection";
 import ServicesSection from "./components/ServicesSection";
+import WhyChooseUsSection from "./components/WhyChooseUsSection";
 import ProjectsSection from "./components/ProjectsSection";
+import SafetySection from "./components/SafetySection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import AboutPage from "./pages/AboutPage";
@@ -21,12 +24,14 @@ import ContactPage from "./pages/ContactPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function HomePage() {
-  // Home page content can have its own animations if needed
   return (
     <main>
       <HeroSection />
+      <CapabilitiesSection />
       <ServicesSection />
+      <WhyChooseUsSection />
       <ProjectsSection />
+      <SafetySection />
       <ContactSection />
     </main>
   );

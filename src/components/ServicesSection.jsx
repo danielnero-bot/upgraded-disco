@@ -16,27 +16,27 @@ const services = [
   {
     icon: FiTruck,
     number: "01",
-    title: "Haulage & transportation",
+    title: "Haulage & Transportation",
     description:
-      "Overland transit for industrial plant components, line pipes, tubulars and oversized cargo, with dedicated pilot-escort coordination.",
+      "Overland transit for industrial plant components, line pipes, tubulars and oversized cargo, supported by pilot-escort coordination.",
     image: Haulage,
     alt: "Heavy transport truck on an industrial road",
   },
   {
     icon: FiLayers,
     number: "02",
-    title: "Heavy lift & craneage",
+    title: "Heavy Lift & Craneage",
     description:
-      "Engineered lifting, tandem crane operations and precision offloading for structural fabrications, offshore packages and pressure vessels.",
+      "Engineered lifting, tandem crane operations and precision offloading for structural fabrications and heavy plant equipment.",
     image: Heavy,
     alt: "Industrial construction and lifting equipment at a worksite",
   },
   {
     icon: FiAnchor,
     number: "03",
-    title: "Rig move operations",
+    title: "Rig Move Operations",
     description:
-      "End-to-end relocation of land and swamp drilling rigs, heavy mud pumps and camp modules under rigorous HSE protocols.",
+      "End-to-end relocation of land and swamp drilling rigs, heavy mud pumps and camp modules under strict HSE protocols.",
     image: Rig,
     alt: "Large industrial port cranes and cargo operations",
     featured: true,
@@ -44,9 +44,9 @@ const services = [
   {
     icon: FiSettings,
     number: "04",
-    title: "Equipment leasing",
+    title: "Equipment Leasing",
     description:
-      "Flexible hire of rough-terrain cranes, lowbeds, flatbeds and dedicated fleet trucks with mechanical support.",
+      "Flexible leasing of rough-terrain cranes, lowbed trailers, flatbeds and dedicated fleet trucks with mechanical support.",
     image:
       "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=85",
     alt: "Industrial operations team working with heavy equipment",
@@ -56,32 +56,30 @@ const services = [
 export default function ServicesSection() {
   const sectionRef = useRef(null);
 
-  useScrollReveal(sectionRef, { stagger: 0.12 });
+  useScrollReveal(sectionRef, { stagger: 0.1 });
 
   return (
     <section
       id="services"
       ref={sectionRef}
-      className="bg-white py-16 text-navy sm:py-20 lg:py-24"
+      className="bg-white py-16 sm:py-20 lg:py-24"
     >
       <div className="container-x">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow mb-2 font-semibold text-amber-foreground reveal">
-              Operational deployment portfolio
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600 reveal">
+              Deployment Portfolio
             </p>
-            <h2 className="text-3xl font-bold uppercase sm:text-4xl reveal">
-              Core specialized services
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl reveal">
+              Core Specialized Services
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-6 text-slate reveal">
-            Industrial equipment and certified transport setups deployed under
-            rigorous engineering protocols across maritime, swamp and dryland
-            terrain.
+          <p className="max-w-md text-sm leading-relaxed text-slate-500 reveal">
+            Heavy-duty industrial assets and certified transportation setups deployed across maritime, swamp, and dryland energy corridors.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {services.map(
             ({
               icon: Icon,
@@ -94,42 +92,43 @@ export default function ServicesSection() {
             }) => (
               <article
                 key={number}
-                className="group flex min-h-124 flex-col overflow-hidden border border-border bg-white transition-shadow duration-300 hover:shadow-lg reveal"
+                className="group flex flex-col overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-slate-100 reveal"
               >
-                <div className="relative h-56 shrink-0 overflow-hidden bg-white">
+                <div className="relative h-52 shrink-0 overflow-hidden bg-slate-50">
                   <img
                     src={image}
                     alt={alt}
                     loading="lazy"
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
+                    className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span                   className="absolute left-3 top-3 border border-border bg-white/95 px-2 py-1 font-mono text-xs uppercase text-navy">
-                    Service / {number}
+                  <span className="absolute left-3 top-3 rounded-md bg-white/95 px-2.5 py-1 text-xs font-semibold text-slate-800 shadow-sm backdrop-blur-sm">
+                    {number}
                   </span>
                   {featured && (
-                    <span                     className="absolute right-0 top-0 bg-amber px-3 py-1 font-mono text-[0.65rem] font-bold uppercase text-navy">
-                      Primary specialty
+                    <span className="absolute right-3 top-3 rounded-md bg-blue-600 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-sm">
+                      Core Specialty
                     </span>
                   )}
                 </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="mb-3 flex size-9 items-center justify-center border border-border text-amber-foreground">
-                    <Icon aria-hidden="true" />
+                
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-3.5 inline-flex size-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
+                    <Icon aria-hidden="true" className="size-4" />
                   </div>
-                  <h3 className="text-xl font-bold leading-6 transition-colors group-hover:text-amber-foreground">
+                  <h3 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600">
                     {title}
                   </h3>
-                  <p className="mt-3 flex-1 text-sm leading-6 text-slate">
+                  <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-500">
                     {description}
                   </p>
                   <Link
                     to="/contact"
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-amber-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700"
                   >
-                    Discuss this service{" "}
+                    <span>Discuss this service</span>
                     <FiArrowRight
                       aria-hidden="true"
-                      className="transition-transform group-hover:translate-x-1"
+                      className="size-4 transition-transform group-hover:translate-x-1"
                     />
                   </Link>
                 </div>
@@ -138,21 +137,20 @@ export default function ServicesSection() {
           )}
         </div>
 
-        <div className="mt-5 flex flex-col gap-4 border-y border-border py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 rounded-xl border border-slate-100 bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-mono text-xs font-semibold uppercase text-amber-foreground">
-              Additional logistical support
+            <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
+              Additional Logistics Support
             </p>
-            <p className="mt-1 max-w-3xl text-sm leading-6 text-slate">
-              Field mechanical maintenance, certified rigging crews, quayside
-              marshaling and staging-yard storage can be mobilized on request.
+            <p className="mt-1 text-sm text-slate-600">
+              Quayside marshaling, certified rigging crews, staging-yard storage, and rapid maintenance teams available on demand.
             </p>
           </div>
           <Link
             to="/contact"
-            className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-navy hover:text-amber-foreground"
+            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-100"
           >
-            Submit fleet requirements <FiArrowRight aria-hidden="true" />
+            Submit Fleet Needs <FiArrowRight aria-hidden="true" className="size-4" />
           </Link>
         </div>
       </div>

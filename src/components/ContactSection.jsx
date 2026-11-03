@@ -3,19 +3,19 @@ import { FiArrowRight, FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 const contactDetails = [
   {
     icon: FiMapPin,
-    label: "Operations address",
+    label: "Operations Address",
     value:
       "Ambassador Nne Furo Kurubo, Model Secondary School Road, Onne, Port Harcourt, Rivers State.",
   },
   {
     icon: FiPhone,
-    label: "Dispatch phone",
+    label: "Direct Dispatch Line",
     value: "+234 (0) 803 708 0258",
     href: "tel:+2348037080258",
   },
   {
     icon: FiMail,
-    label: "Business email",
+    label: "Logistics Email",
     value: "kobbs@kobbsglobal.com",
     href: "mailto:kobbs@kobbsglobal.com",
   },
@@ -23,56 +23,53 @@ const contactDetails = [
 
 export default function ContactSection() {
   return (
-    <section
-      id="contact"
-      className="bg-white py-16 text-navy sm:py-20 lg:py-24"
-    >
+    <section id="contact" className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="container-x">
-        <div className="relative overflow-hidden border-y border-border py-8 sm:py-10 lg:py-14">
-          <div aria-hidden="true" className="absolute right-4 top-4 size-20 border-r border-t border-amber/60 sm:right-8 sm:top-8 sm:size-32" />
+        <div className="relative overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/50 via-white to-white p-8 sm:p-12 lg:p-16 shadow-lg shadow-blue-50/60">
           <div className="relative max-w-3xl">
-            <p className="eyebrow font-semibold text-amber-foreground">
-              Dispatch & project assessment desk
-            </p>
-            <h2 className="mt-3 text-3xl font-bold leading-tight sm:text-4xl">
-              Planning your next industrial move?
+            <span className="inline-flex items-center gap-2 rounded-full bg-blue-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
+              Dispatch & Assessment
+            </span>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+              Ready to mobilize your next industrial project?
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-slate">
-              Tell us about your transportation, heavy-lift or rig-move
-              requirements. Our logistics team can review the scope and prepare
-              a tailored technical assessment.
+            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+              Share your heavy-lift specifications, road transport route, or rig mobilization schedule. Our technical logistics team will evaluate the requirements and deliver an actionable technical quote.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            
+            <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="mailto:kobbs@kobbsglobal.com?subject=Project%20quote%20request"
-                className="inline-flex min-h-12 items-center gap-3 bg-amber px-6 py-3 text-sm font-bold text-navy transition-colors hover:bg-amber/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+                className="inline-flex min-h-12 items-center gap-2.5 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md active:scale-[0.98]"
               >
-                Request a quote <FiArrowRight aria-hidden="true" />
+                <span>Request a Project Quote</span>
+                <FiArrowRight aria-hidden="true" className="size-4" />
               </a>
               <a
                 href="tel:+2348037080258"
-                className="inline-flex min-h-12 items-center gap-3 border border-border bg-white px-5 py-3 text-sm font-semibold transition-colors hover:border-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+                className="inline-flex min-h-12 items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50"
               >
-                <FiPhone aria-hidden="true" className="text-amber" />
-                Speak with operations
+                <FiPhone aria-hidden="true" className="size-4 text-blue-600" />
+                <span>Call Operations Desk</span>
               </a>
             </div>
-            <div className="mt-9 grid gap-4 border-y border-border py-5 sm:grid-cols-3">
+
+            <div className="mt-12 grid gap-6 border-t border-slate-200/80 pt-8 sm:grid-cols-3">
               {contactDetails.map(({ icon: Icon, label, value, href }) => (
-                <div key={label}>
-                  <p className="mb-2 flex items-center gap-2 font-mono text-[0.65rem] font-semibold uppercase text-slate">
-                    <Icon aria-hidden="true" className="text-amber" />
+                <div key={label} className="space-y-1">
+                  <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    <Icon aria-hidden="true" className="size-3.5 text-blue-600" />
                     {label}
                   </p>
                   {href ? (
                     <a
                       href={href}
-                      className="text-sm font-medium text-navy hover:text-amber-foreground"
+                      className="block text-sm font-semibold text-slate-900 transition-colors hover:text-blue-600"
                     >
                       {value}
                     </a>
                   ) : (
-                    <p className="text-sm font-medium">{value}</p>
+                    <p className="text-sm font-medium text-slate-700">{value}</p>
                   )}
                 </div>
               ))}

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { gsap } from "gsap";
 import logo from "../assets/logo1.png";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -19,7 +19,6 @@ export default function Navbar() {
   const navRef = useRef(null);
   const mobileNavRef = useRef(null);
 
-  // Animate header and nav links on mount
   useEffect(() => {
     const prefersReducedMotion =
       typeof window !== "undefined" &&
@@ -32,19 +31,18 @@ export default function Navbar() {
         return;
       }
 
-      gsap.from(headerRef.current, { y: -30, opacity: 0, duration: 0.6 });
+      gsap.from(headerRef.current, { y: -20, opacity: 0, duration: 0.5, ease: "power2.out" });
       gsap.from(navRef.current?.querySelectorAll("a"), {
-        y: 20,
+        y: 10,
         opacity: 0,
-        stagger: 0.08,
-        duration: 0.5,
+        stagger: 0.05,
+        duration: 0.4,
         ease: "power2.out",
       });
     }, [headerRef, navRef]);
     return () => ctx.revert();
   }, []);
 
-  // Animate mobile menu opening/closing without unmounting during the transition.
   useEffect(() => {
     if (!mobileNavRef.current) return;
 
@@ -55,59 +53,54 @@ export default function Navbar() {
     if (prefersReducedMotion) {
       gsap.set(mobileNavRef.current, {
         display: menuOpen ? "block" : "none",
-        height: "auto",
         opacity: 1,
       });
       return;
     }
 
     if (menuOpen) {
-      gsap.set(mobileNavRef.current, {
-        display: "block",
-        height: 0,
-        opacity: 0,
-      });
+      gsap.set(mobileNavRef.current, { display: "block", height: 0, opacity: 0 });
       gsap.to(mobileNavRef.current, {
         height: "auto",
         opacity: 1,
-        duration: 0.35,
+        duration: 0.3,
         ease: "power2.out",
       });
-      return;
+    } else {
+      gsap.to(mobileNavRef.current, {
+        height: 0,
+        opacity: 0,
+        duration: 0.2,
+        ease: "power2.in",
+        onComplete: () => {
+          gsap.set(mobileNavRef.current, { display: "none" });
+        },
+      });
     }
-
-    gsap.to(mobileNavRef.current, {
-      height: 0,
-      opacity: 0,
-      duration: 0.25,
-      ease: "power2.in",
-      onComplete: () => {
-        gsap.set(mobileNavRef.current, { display: "none" });
-      },
-    });
   }, [menuOpen]);
 
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 border-b border-border bg-white text-navy shadow-sm"
+      className="fixed inset-x-0 top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur-md transition-all duration-200"
     >
       <nav
         aria-label="Main navigation"
-        className="container-x flex min-h-20 items-center justify-between gap-4 py-2"
+        className="container-x flex h-20 items-center justify-between gap-6"
       >
         <Link
           to="/"
           aria-label="Kobbs Global home"
-          className="inline-flex shrink-0 items-center rounded-sm p-1"
+          className="group inline-flex shrink-0 items-center rounded-lg p-1 transition-opacity hover:opacity-90"
         >
           <img
             src={logo}
             alt="Kobbs Global logo"
-            className="h-12 w-auto max-w-[11rem] object-contain sm:h-14 sm:max-w-none"
+            className="h-10 w-auto object-contain sm:h-12"
           />
         </Link>
 
+        {/* Desktop Navigation */}
         <div ref={navRef} className="hidden items-center gap-1 lg:flex">
           {navItems.map(({ label, href }) => (
             <NavLink
@@ -116,10 +109,10 @@ export default function Navbar() {
               end={href === "/"}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `rounded-sm border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber ${
+                `rounded-md px-3.5 py-2 text-sm font-medium transition-all duration-150 ${
                   isActive
-                    ? "border-b-2 border-amber text-navy"
-                    : "text-slate hover:text-navy"
+                    ? "bg-blue-50 text-blue-600 font-semibold"
+                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 }`
               }
             >
@@ -128,66 +121,37 @@ export default function Navbar() {
           ))}
         </div>
 
-        <Link
-          to="/contact"
-          className="hidden shrink-0 items-center gap-2 border border-amber bg-white px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber lg:inline-flex"
-        >
-          Request a Quote{" "}
-          <FiArrowUpRight aria-hidden="true" className="size-4" />
-        </Link>
+        <div className="hidden items-center gap-3 lg:flex">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+          >
+            <span>Request a Quote</span>
+            <FiArrowUpRight aria-hidden="true" className="size-4" />
+          </Link>
+        </div>
 
+        {/* Mobile menu trigger */}
         <button
           type="button"
-          aria-label={
-            menuOpen ? "Close navigation menu" : "Open navigation menu"
-          }
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          className="inline-flex size-11 items-center justify-center rounded-sm border border-border text-navy transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber lg:hidden"
+          className="inline-flex size-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-blue-600 lg:hidden"
         >
-          {menuOpen ? (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="size-5"
-            >
-              <path
-                d="m6 6 12 12M18 6 6 18"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
-          ) : (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="size-5"
-            >
-              <path
-                d="M4 7h16M4 12h16M4 17h16"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
-          )}
+          {menuOpen ? <FiX className="size-5" /> : <FiMenu className="size-5" />}
         </button>
       </nav>
 
+      {/* Mobile navigation panel */}
       <div
         ref={mobileNavRef}
         id="mobile-navigation"
         aria-hidden={!menuOpen}
-        className="hidden overflow-hidden border-t border-border bg-white px-5 pb-5 pt-2 lg:hidden"
+        className="hidden overflow-hidden border-t border-slate-100 bg-white px-6 pb-6 pt-3 shadow-lg lg:hidden"
       >
-        <nav
-          aria-label="Mobile navigation"
-          className="mx-auto flex max-w-7xl flex-col"
-        >
+        <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
           {navItems.map(({ label, href }) => (
             <NavLink
               key={label}
@@ -195,8 +159,10 @@ export default function Navbar() {
               end={href === "/"}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `border-b border-border py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-amber ${
-                  isActive ? "text-amber-foreground" : "text-navy hover:text-amber-foreground"
+                `rounded-lg px-3.5 py-2.5 text-base font-medium transition-colors ${
+                  isActive
+                    ? "bg-blue-50 text-blue-600 font-semibold"
+                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 }`
               }
             >
@@ -206,10 +172,9 @@ export default function Navbar() {
           <Link
             to="/contact"
             onClick={() => setMenuOpen(false)}
-            className="mt-4 inline-flex items-center justify-center gap-2 border border-amber bg-white px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+            className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.98]"
           >
-            Request a Quote{" "}
-            <FiArrowUpRight aria-hidden="true" className="size-4" />
+            Request a Quote <FiArrowUpRight aria-hidden="true" className="size-4" />
           </Link>
         </nav>
       </div>

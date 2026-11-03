@@ -4,77 +4,77 @@ const strengths = [
   {
     icon: FiMapPin,
     number: "01",
-    title: "Industrial haulage experience",
+    title: "Regional Logistics Intelligence",
     description:
-      "Working knowledge of Nigerian transport routes, port approaches, swamp concessions and Niger Delta operating conditions.",
-    label: "Regional knowledge",
+      "Deep working knowledge of Nigerian transit routes, port approach bottlenecks, swamp accessways, and Niger Delta operational realities.",
+    label: "Regional Expertise",
   },
   {
     icon: FiTruck,
     number: "02",
-    title: "Heavy-cargo capabilities",
+    title: "Heavy & Oversized Capability",
     description:
-      "Mobilization planning for out-of-gauge cargo, heavy industrial components and multi-piece drilling systems.",
-    label: "Engineered handling",
+      "Engineered mobilization planning for out-of-gauge equipment, modular plant fabrications, and multi-component drilling systems.",
+    label: "Engineered Transport",
   },
   {
     icon: FiTool,
     number: "03",
-    title: "Operational field support",
+    title: "Hands-on Field Supervision",
     description:
-      "Journey management, escort coordination, equipment-readiness checks and on-site supervision for each contract.",
-    label: "Hands-on supervision",
+      "Rigorous journey management, pilot vehicle escorts, pre-trip inspection protocols, and continuous on-site field oversight.",
+    label: "Direct Supervision",
   },
   {
     icon: FiUsers,
     number: "04",
-    title: "Punctual professionalism",
+    title: "Punctual & Compliant Delivery",
     description:
-      "Clear transit updates, structured mobilization schedules, responsive client liaisons and regulatory compliance.",
-    label: "Contract integrity",
+      "Transparent tracking updates, prompt mobilization schedules, active client communication, and strict regulatory compliance.",
+    label: "Execution Integrity",
   },
 ];
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="bg-white py-16 text-navy sm:py-20 lg:py-24">
+    <section className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="container-x">
-        <div className="mb-10 max-w-2xl">
-          <p className="eyebrow mb-2 font-semibold text-amber-foreground">
-            Operational differentiation
+        <div className="mb-14 max-w-2xl">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
+            Operational Value
           </p>
-          <h2 className="text-3xl font-bold uppercase leading-tight sm:text-4xl">
-            Why industrial operators choose Kobbs Global
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            Why industry leaders partner with Kobbs Global
           </h2>
-          <p className="mt-4 text-base leading-7 text-slate">
-            Built on direct experience in high-consequence environments where
-            safety and logistical readiness matter.
+          <p className="mt-4 text-base leading-relaxed text-slate-500">
+            Founded on decades of real-world execution in high-consequence environments where precision and safety are non-negotiable.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {strengths.map(
             ({ icon: Icon, number, title, description, label }) => (
               <article
                 key={number}
-                className="flex min-h-72 flex-col justify-between border border-border bg-white p-6 transition-shadow hover:shadow-md"
+                className="group flex flex-col justify-between rounded-xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-100 hover:shadow-lg hover:shadow-blue-50/50"
               >
                 <div>
-                  <div className="mb-5 flex size-11 items-center justify-center border border-amber text-amber-foreground">
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-lg bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
                     <Icon aria-hidden="true" className="size-5" />
                   </div>
-                  <p className="font-mono text-xs uppercase text-slate">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                     Pillar {number}
-                  </p>
-                  <h3 className="mt-2 text-xl font-bold leading-6">
+                  </span>
+                  <h3 className="mt-2 text-lg font-bold text-slate-900">
                     {title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-500">
                     {description}
                   </p>
                 </div>
-                <p className="mt-5 border-t border-border pt-3 font-mono text-xs font-semibold uppercase text-navy">
+                <div className="mt-6 border-t border-slate-100 pt-4 text-xs font-semibold uppercase tracking-wider text-blue-600">
                   {label}
-                </p>
+                </div>
               </article>
             ),
           )}
