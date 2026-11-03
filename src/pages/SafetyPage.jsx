@@ -1,6 +1,7 @@
 import { FiActivity, FiCheckSquare, FiLifeBuoy } from "react-icons/fi";
 import PageIntro from "../components/PageIntro";
 import SafetySection from "../components/SafetySection";
+import pic from "../assets/OIP (1).webp";
 
 const safetyPhases = [
   {
@@ -39,9 +40,8 @@ export default function SafetyPage() {
         eyebrow="HSE & safety"
         title="Safety is part of every operational decision."
         description="Our approach is built around planning, equipment integrity, crew readiness and documented controls for transport and lifting work."
-        image="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=2200&q=85"
-      />
-      <SafetySection />
+        image= {pic}
+></PageIntro>      <SafetySection />
       <section className="bg-background py-16 text-foreground sm:py-20">
         <div className="container-x">
           <p className="eyebrow mb-2 font-semibold text-navy">

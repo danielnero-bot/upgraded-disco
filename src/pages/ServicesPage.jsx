@@ -2,6 +2,7 @@ import { FiClipboard, FiTool, FiTruck } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
 import ServicesSection from "../components/ServicesSection";
+import img from "../assets/thumbnail (6).jpg";
 
 const deliverySteps = [
   {
@@ -28,7 +29,7 @@ export default function ServicesPage() {
         eyebrow="Core services"
         title="Specialized transport and lifting for demanding operations."
         description="Explore haulage, heavy lift, rig moves and equipment leasing for industrial projects across Nigeria."
-        image="https://images.unsplash.com/photo-1513828583688-c52646e6e9a3?auto=format&fit=crop&w=2200&q=85"
+        image= {img}
       />
       <ServicesSection />
       <section className="bg-background py-16 text-foreground sm:py-20">

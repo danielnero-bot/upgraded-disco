@@ -67,7 +67,7 @@ export default function Footer() {
                 +234 (0) 803 708 0258
               </a>
               <a
-                className="mt-1 inline-block text-navy hover:text-amber-foreground"
+                className="mt-1 block text-navy hover:text-amber-foreground"
                 href="mailto:kobbs@kobbsglobal.com"
               >
                 kobbs@kobbsglobal.com

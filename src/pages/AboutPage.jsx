@@ -10,6 +10,7 @@ import PageIntro from "../components/PageIntro";
 import { useRef } from "react";
 import useScrollReveal from "../hooks/useScrollReveal";
 import pic from "../assets/thumbnail.jpg";
+import pict from "../assets/2015-05-17 12.13.41(1).jpg";
 
 const operatingPrinciples = [
   {
@@ -53,7 +54,7 @@ export default function AboutPage() {
         eyebrow="About Kobbs Global"
         title="Built around the realities of industrial movement."
         description="Established in 1997, Kobbs Global Services Nigeria Limited supports haulage, heavy-lift, rig-move and equipment-leasing operations across oil and gas, construction and energy projects."
-        image="https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?auto=format&fit=crop&w=2200&q=85"
+        image={pict}
         className="reveal"
       />
 

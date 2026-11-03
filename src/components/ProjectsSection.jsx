@@ -21,7 +21,7 @@ const references = [
     description:
       "Historical project record published by Kobbs Global: haulage of equipment for a mini A.G.O. plant for Niger/Delta Petroleum Resources Ltd — Murphy Shipping/Commercial Services.",
     scope: "Equipment haulage",
-    image: heavyImage,
+    image: thirdImage,
   },
 ];
 
@@ -46,7 +46,7 @@ export default function ProjectsSection() {
         <div className="grid gap-4 lg:grid-cols-12">
           <article className="flex flex-col justify-between border border-border bg-white lg:col-span-7">
             <figure className="relative h-56 overflow-hidden sm:h-72">
-              <img src={thirdImage} alt="Heavy truck for industrial road transportation" loading="lazy" className="size-full object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:transition-none" />
+              <img src={heavyImage} alt="Heavy truck for industrial road transportation" loading="lazy" className="size-full object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:transition-none" />
               <figcaption className="absolute bottom-3 left-3 bg-white/95 px-3 py-2 text-xs text-slate">Illustrative operations imagery</figcaption>
             </figure>
             <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
