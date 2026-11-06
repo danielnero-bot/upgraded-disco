@@ -15,34 +15,53 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef(null);
   const navRef = useRef(null);
   const mobileNavRef = useRef(null);
 
+  // Track scroll position to reveal hairline bottom border
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 12);
+    }
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
+
+  // Entrance animation
   useEffect(() => {
     const prefersReducedMotion =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const ctx = gsap.context(() => {
-      if (prefersReducedMotion) {
-        gsap.set(headerRef.current, { y: 0, opacity: 1 });
-        gsap.set(navRef.current?.querySelectorAll("a"), { y: 0, opacity: 1 });
-        return;
-      }
+    if (prefersReducedMotion) return;
 
-      gsap.from(headerRef.current, { y: -20, opacity: 0, duration: 0.5, ease: "power2.out" });
-      gsap.from(navRef.current?.querySelectorAll("a"), {
-        y: 10,
+    const ctx = gsap.context(() => {
+      gsap.from(headerRef.current, {
+        y: -16,
         opacity: 0,
-        stagger: 0.05,
-        duration: 0.4,
+        duration: 0.5,
         ease: "power2.out",
       });
-    }, [headerRef, navRef]);
+    }, headerRef);
+
     return () => ctx.revert();
   }, []);
 
+  // Mobile menu open/close animation with gsap.context for clean unmount/fast toggling
   useEffect(() => {
     if (!mobileNavRef.current) return;
 
@@ -51,38 +70,46 @@ export default function Navbar() {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion) {
-      gsap.set(mobileNavRef.current, {
-        display: menuOpen ? "block" : "none",
-        opacity: 1,
-      });
+      mobileNavRef.current.style.display = menuOpen ? "block" : "none";
+      mobileNavRef.current.style.opacity = "1";
       return;
     }
 
-    if (menuOpen) {
-      gsap.set(mobileNavRef.current, { display: "block", height: 0, opacity: 0 });
-      gsap.to(mobileNavRef.current, {
-        height: "auto",
-        opacity: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    } else {
-      gsap.to(mobileNavRef.current, {
-        height: 0,
-        opacity: 0,
-        duration: 0.2,
-        ease: "power2.in",
-        onComplete: () => {
-          gsap.set(mobileNavRef.current, { display: "none" });
-        },
-      });
-    }
+    const ctx = gsap.context(() => {
+      if (menuOpen) {
+        gsap.set(mobileNavRef.current, { display: "block", height: 0, opacity: 0 });
+        gsap.to(mobileNavRef.current, {
+          height: "auto",
+          opacity: 1,
+          duration: 0.25,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(mobileNavRef.current, {
+          height: 0,
+          opacity: 0,
+          duration: 0.2,
+          ease: "power2.in",
+          onComplete: () => {
+            if (mobileNavRef.current) {
+              gsap.set(mobileNavRef.current, { display: "none" });
+            }
+          },
+        });
+      }
+    }, mobileNavRef);
+
+    return () => ctx.revert();
   }, [menuOpen]);
 
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur-md transition-all duration-200"
+      className={`fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-200 ${
+        scrolled
+          ? "border-b border-steel-200 shadow-[0_1px_3px_0_rgba(7,20,38,0.04)]"
+          : "border-b border-transparent"
+      }`}
     >
       <nav
         aria-label="Main navigation"
@@ -91,7 +118,7 @@ export default function Navbar() {
         <Link
           to="/"
           aria-label="Kobbs Global home"
-          className="group inline-flex shrink-0 items-center rounded-lg p-1 transition-opacity hover:opacity-90"
+          className="group inline-flex shrink-0 items-center rounded-[var(--radius-card)] p-1 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-accent"
         >
           <img
             src={logo}
@@ -109,10 +136,10 @@ export default function Navbar() {
               end={href === "/"}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `rounded-md px-3.5 py-2 text-sm font-medium transition-all duration-150 ${
+                `rounded-[var(--radius-card)] px-3.5 py-2 text-sm font-semibold transition-colors duration-150 ${
                   isActive
-                    ? "bg-blue-50 text-blue-600 font-semibold"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    ? "bg-steel-100 text-navy-900"
+                    : "text-steel-600 hover:bg-steel-50 hover:text-navy-900"
                 }`
               }
             >
@@ -124,7 +151,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            className="inline-flex items-center gap-2 rounded-[var(--radius-card)] bg-accent px-5 py-2.5 text-sm font-bold text-navy-950 shadow-xs transition-colors hover:bg-accent-hover active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             <span>Request a Quote</span>
             <FiArrowUpRight aria-hidden="true" className="size-4" />
@@ -138,7 +165,7 @@ export default function Navbar() {
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          className="inline-flex size-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-blue-600 lg:hidden"
+          className="inline-flex size-10 items-center justify-center rounded-[var(--radius-card)] border border-steel-200 bg-white text-navy-900 transition-colors hover:bg-steel-50 focus-visible:outline-2 focus-visible:outline-accent lg:hidden"
         >
           {menuOpen ? <FiX className="size-5" /> : <FiMenu className="size-5" />}
         </button>
@@ -149,7 +176,7 @@ export default function Navbar() {
         ref={mobileNavRef}
         id="mobile-navigation"
         aria-hidden={!menuOpen}
-        className="hidden overflow-hidden border-t border-slate-100 bg-white px-6 pb-6 pt-3 shadow-lg lg:hidden"
+        className="hidden overflow-hidden border-t border-steel-200 bg-white px-6 pb-6 pt-3 shadow-lg lg:hidden"
       >
         <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
           {navItems.map(({ label, href }) => (
@@ -159,10 +186,10 @@ export default function Navbar() {
               end={href === "/"}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `rounded-lg px-3.5 py-2.5 text-base font-medium transition-colors ${
+                `rounded-[var(--radius-card)] px-3.5 py-2.5 text-base font-semibold transition-colors ${
                   isActive
-                    ? "bg-blue-50 text-blue-600 font-semibold"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    ? "bg-steel-100 text-navy-900"
+                    : "text-steel-600 hover:bg-steel-50 hover:text-navy-900"
                 }`
               }
             >
@@ -172,9 +199,10 @@ export default function Navbar() {
           <Link
             to="/contact"
             onClick={() => setMenuOpen(false)}
-            className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.98]"
+            className="mt-3 inline-flex items-center justify-center gap-2 rounded-[var(--radius-card)] bg-accent px-5 py-3 text-sm font-bold text-navy-950 shadow-xs transition-colors hover:bg-accent-hover active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-accent"
           >
-            Request a Quote <FiArrowUpRight aria-hidden="true" className="size-4" />
+            <span>Request a Quote</span>
+            <FiArrowUpRight aria-hidden="true" className="size-4" />
           </Link>
         </nav>
       </div>

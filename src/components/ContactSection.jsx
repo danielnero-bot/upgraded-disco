@@ -23,53 +23,56 @@ const contactDetails = [
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="contact" className="bg-navy-900 py-24 lg:py-32">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/50 via-white to-white p-8 sm:p-12 lg:p-16 shadow-lg shadow-blue-50/60">
+        <div className="relative overflow-hidden rounded-[var(--radius-card)] border border-navy-800 p-8 sm:p-12 lg:p-16">
+          {/* Subtle decorative rule */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+
           <div className="relative max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-blue-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
+            <span className="inline-flex items-center gap-2 rounded-[var(--radius-card)] border border-navy-700 bg-navy-800 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-steel-200">
               Dispatch & Assessment
             </span>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Ready to mobilize your next industrial project?
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-steel-400 sm:text-lg">
               Share your heavy-lift specifications, road transport route, or rig mobilization schedule. Our technical logistics team will evaluate the requirements and deliver an actionable technical quote.
             </p>
-            
+
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="mailto:kobbs@kobbsglobal.com?subject=Project%20quote%20request"
-                className="inline-flex min-h-12 items-center gap-2.5 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md active:scale-[0.98]"
+                className="inline-flex min-h-12 items-center gap-2.5 rounded-[var(--radius-card)] bg-accent px-6 py-3 text-sm font-bold text-navy-950 shadow-xs transition-colors hover:bg-accent-hover active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 <span>Request a Project Quote</span>
                 <FiArrowRight aria-hidden="true" className="size-4" />
               </a>
               <a
                 href="tel:+2348037080258"
-                className="inline-flex min-h-12 items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50"
+                className="inline-flex min-h-12 items-center gap-2.5 rounded-[var(--radius-card)] border border-navy-700 bg-navy-800 px-5 py-3 text-sm font-bold text-steel-200 transition-colors hover:border-steel-400 hover:bg-navy-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
-                <FiPhone aria-hidden="true" className="size-4 text-blue-600" />
+                <FiPhone aria-hidden="true" className="size-4 text-accent" />
                 <span>Call Operations Desk</span>
               </a>
             </div>
 
-            <div className="mt-12 grid gap-6 border-t border-slate-200/80 pt-8 sm:grid-cols-3">
+            <div className="mt-12 grid gap-6 border-t border-navy-800 pt-8 sm:grid-cols-3">
               {contactDetails.map(({ icon: Icon, label, value, href }) => (
-                <div key={label} className="space-y-1">
-                  <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
-                    <Icon aria-hidden="true" className="size-3.5 text-blue-600" />
+                <div key={label} className="space-y-1.5">
+                  <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-steel-400">
+                    <Icon aria-hidden="true" className="size-3.5 text-accent" />
                     {label}
                   </p>
                   {href ? (
                     <a
                       href={href}
-                      className="block text-sm font-semibold text-slate-900 transition-colors hover:text-blue-600"
+                      className="block text-sm font-semibold text-steel-200 transition-colors hover:text-white focus-visible:outline-1 focus-visible:outline-accent"
                     >
                       {value}
                     </a>
                   ) : (
-                    <p className="text-sm font-medium text-slate-700">{value}</p>
+                    <p className="text-sm font-medium text-steel-400 leading-relaxed">{value}</p>
                   )}
                 </div>
               ))}
