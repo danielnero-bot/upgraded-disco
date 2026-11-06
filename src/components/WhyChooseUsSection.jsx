@@ -37,16 +37,17 @@ const strengths = [
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24">
+    <section className="border-y border-steel-200 bg-steel-50 py-24 lg:py-32">
       <div className="container-x">
         <div className="mb-14 max-w-2xl">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
-            Operational Value
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-[var(--radius-card)] border border-steel-200 bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-800 shadow-xs">
+            <span className="size-1.5 rounded-full bg-accent" />
+            <span>Operational Value</span>
+          </div>
+          <h2 className="text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
             Why industry leaders partner with Kobbs Global
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-500">
+          <p className="mt-4 text-base leading-relaxed text-steel-600">
             Founded on decades of real-world execution in high-consequence environments where precision and safety are non-negotiable.
           </p>
         </div>
@@ -56,23 +57,23 @@ export default function WhyChooseUsSection() {
             ({ icon: Icon, number, title, description, label }) => (
               <article
                 key={number}
-                className="group flex flex-col justify-between rounded-xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-100 hover:shadow-lg hover:shadow-blue-50/50"
+                className="group flex flex-col justify-between rounded-[var(--radius-card)] border border-steel-200 bg-white p-7 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-navy-700 hover:shadow-sm"
               >
                 <div>
-                  <div className="mb-6 flex size-12 items-center justify-center rounded-lg bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
+                  <div className="mb-6 flex size-12 items-center justify-center rounded-[var(--radius-card)] bg-steel-100 text-navy-900 transition-colors group-hover:bg-navy-900 group-hover:text-white">
                     <Icon aria-hidden="true" className="size-5" />
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-steel-400">
                     Pillar {number}
                   </span>
-                  <h3 className="mt-2 text-lg font-bold text-slate-900">
+                  <h3 className="mt-2 text-lg font-bold text-navy-900">
                     {title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-500">
+                  <p className="mt-3 text-sm leading-relaxed text-steel-600">
                     {description}
                   </p>
                 </div>
-                <div className="mt-6 border-t border-slate-100 pt-4 text-xs font-semibold uppercase tracking-wider text-blue-600">
+                <div className="mt-6 border-t border-steel-200 pt-4 text-xs font-bold uppercase tracking-wider text-navy-700">
                   {label}
                 </div>
               </article>
