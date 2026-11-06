@@ -49,13 +49,13 @@ export default function ProjectsSection() {
 
         <div className="grid gap-6 lg:grid-cols-12">
           {/* Main Featured Case */}
-          <article className="flex flex-col justify-between overflow-hidden rounded-[var(--radius-card)] border border-steel-200 bg-white shadow-xs transition-all duration-300 hover:border-navy-700 hover:shadow-md lg:col-span-7">
+          <article className="group flex flex-col justify-between overflow-hidden rounded-[var(--radius-card)] border border-steel-200 bg-white shadow-xs transition-all duration-300 hover:border-navy-700 hover:shadow-md lg:col-span-7">
             <figure className="relative aspect-[16/10] overflow-hidden bg-steel-100 border-b border-steel-200">
               <img
                 src={heavyImage}
                 alt="Heavy truck for industrial road transportation on Egina project"
                 loading="lazy"
-                className="size-full object-cover transition-transform duration-700 hover:scale-105"
+                className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <figcaption className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-card)] border border-steel-200/40 bg-white/95 px-3 py-1.5 text-xs font-medium text-navy-900 shadow-sm backdrop-blur-xs">
                 <span><strong>Job:</strong> Multi-Axle Road Haulage</span>
