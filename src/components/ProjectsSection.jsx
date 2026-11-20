@@ -1,5 +1,6 @@
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Reveal from "./Reveal";
 import heavyImage from "../assets/OIP (3).webp";
 import thirdImage from "../assets/OIP (2).webp";
 
@@ -33,7 +34,7 @@ export default function ProjectsSection() {
     <section id="projects" className="bg-white py-24 lg:py-32">
       <div className="container-x">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
+          <Reveal as="div" stagger={0.08}>
             <div className="mb-3 inline-flex items-center gap-2 rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-800 shadow-xs">
               <span className="size-1.5 rounded-full bg-accent" />
               <span>Verified Track Record</span>
@@ -41,21 +42,31 @@ export default function ProjectsSection() {
             <h2 className="max-w-3xl text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
               Project Experience & Historical References
             </h2>
-          </div>
-          <span className="w-fit rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 px-3.5 py-1.5 text-xs font-bold text-navy-800 shadow-xs">
+          </Reveal>
+          <Reveal
+            as="span"
+            className="w-fit rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 px-3.5 py-1.5 text-xs font-bold text-navy-800 shadow-xs"
+          >
             Documented Energy Participation
-          </span>
+          </Reveal>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-12">
+        <Reveal
+          as="div"
+          className="grid gap-6 lg:grid-cols-12"
+          stagger={0.1}
+        >
           {/* Main Featured Case */}
           <article className="group flex flex-col justify-between overflow-hidden rounded-[var(--radius-card)] border border-steel-200 bg-white shadow-xs transition-all duration-300 hover:border-navy-700 hover:shadow-md lg:col-span-7">
             <figure className="relative aspect-[16/10] overflow-hidden bg-steel-100 border-b border-steel-200">
-              <img
+              <Reveal
+                as="img"
                 src={heavyImage}
                 alt="Heavy truck for industrial road transportation on Egina project"
                 loading="lazy"
                 className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                variant="scale-in"
+                duration={0.8}
               />
               <figcaption className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-card)] border border-steel-200/40 bg-white/95 px-3 py-1.5 text-xs font-medium text-navy-900 shadow-sm backdrop-blur-xs">
                 <span><strong>Job:</strong> Multi-Axle Road Haulage</span>
@@ -99,18 +110,25 @@ export default function ProjectsSection() {
           </article>
 
           {/* Secondary Cases */}
-          <div className="grid gap-6 lg:col-span-5">
+          <Reveal
+            as="div"
+            className="grid gap-6 lg:col-span-5"
+            stagger={0.1}
+          >
             {references.map(({ eyebrow, location, jobType, equipment, title, description, scope, image }) => (
               <article
                 key={title}
                 className="group flex flex-col justify-between overflow-hidden rounded-[var(--radius-card)] border border-steel-200 bg-white shadow-xs transition-all duration-300 hover:border-navy-700 hover:shadow-md"
               >
                 <figure className="relative aspect-[16/10] overflow-hidden bg-steel-100 border-b border-steel-200">
-                  <img
+                  <Reveal
+                    as="img"
                     src={image}
                     alt="Industrial logistics equipment"
                     loading="lazy"
                     className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    variant="scale-in"
+                    duration={0.8}
                   />
                   <figcaption className="absolute bottom-2.5 left-2.5 right-2.5 flex flex-wrap items-center justify-between gap-1.5 rounded-[var(--radius-card)] border border-steel-200/40 bg-white/95 px-2.5 py-1 text-[0.7rem] font-medium text-navy-900 shadow-xs backdrop-blur-xs">
                     <span><strong>Job:</strong> {jobType}</span>
@@ -136,10 +154,13 @@ export default function ProjectsSection() {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
+          </Reveal>
+        </Reveal>
 
-        <div className="mt-12 flex flex-col gap-4 rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <Reveal
+          as="div"
+          className="mt-12 flex flex-col gap-4 rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 p-6 sm:flex-row sm:items-center sm:justify-between"
+        >
           <p className="text-sm text-steel-600">
             Formal technical qualification and project verification dossiers are available upon formal client request.
           </p>
@@ -150,7 +171,7 @@ export default function ProjectsSection() {
             <span>Request Detailed Dossier</span>
             <FiArrowRight aria-hidden="true" className="size-4 text-steel-400" />
           </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

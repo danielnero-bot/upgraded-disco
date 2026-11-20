@@ -1,5 +1,6 @@
 import { FiFileText, FiMapPin, FiTruck } from "react-icons/fi";
 import PageIntro from "../components/PageIntro";
+import Reveal from "../components/Reveal";
 import ProjectsSection from "../components/ProjectsSection";
 
 const projectFactors = [
@@ -34,13 +35,15 @@ export default function ProjectsPage() {
       {/* Methodology Section */}
       <section className="bg-white py-16 sm:py-20 border-t border-slate-100">
         <div className="container-x">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
+          <Reveal as="div" className="mb-10 max-w-2xl" stagger={0.08}>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
             Execution Standards
-          </p>
-          <h2 className="mb-10 max-w-2xl text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            The engineering details behind every successful mobilization
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              The engineering details behind every successful mobilization
+            </h2>
+          </Reveal>
+          <Reveal as="div" className="grid gap-6 md:grid-cols-3" stagger={0.1}>
             {projectFactors.map(({ icon: Icon, title, text }) => (
               <article
                 key={title}
@@ -55,7 +58,7 @@ export default function ProjectsPage() {
                 </p>
               </article>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

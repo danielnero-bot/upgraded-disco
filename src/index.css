@@ -126,3 +126,83 @@
     scroll-behavior: auto !important;
   }
 }
+
+.truck-journey {
+  position: fixed;
+  z-index: 30;
+  inset-inline: 0;
+  bottom: 0;
+  height: 112px;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.85) 48%,
+    transparent
+  );
+}
+
+.truck-road {
+  position: absolute;
+  bottom: 13px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #b9c5cf;
+}
+
+.truck-road__line {
+  position: absolute;
+  inset: 1px 0 auto;
+  height: 2px;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #f2a900 0,
+    #f2a900 34px,
+    transparent 34px,
+    transparent 62px
+  );
+}
+
+.truck-vehicle {
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+  width: clamp(245px, 32vw, 390px);
+
+  will-change: transform;
+  filter: drop-shadow(
+    0 5px 5px rgba(7, 20, 38, 0.18)
+  );
+}
+
+.truck-artwork {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .truck-journey {
+    height: 88px;
+  }
+
+  .truck-vehicle {
+    width: 250px;
+    bottom: 10px;
+  }
+
+  .truck-road {
+    bottom: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .truck-vehicle {
+    transform: translateX(18px);
+  }
+}

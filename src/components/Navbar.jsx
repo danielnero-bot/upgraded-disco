@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { gsap } from "gsap";
+import { gsap, useGSAP } from "../animations";
+import Reveal from "./Reveal";
 import logo from "../assets/logo1.png";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 
@@ -16,9 +17,8 @@ const navItems = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const headerRef = useRef(null);
-  const navRef = useRef(null);
   const mobileNavRef = useRef(null);
+  const hasOpenedMenuRef = useRef(false);
 
   // Track scroll position to reveal hairline bottom border
   useEffect(() => {
@@ -41,70 +41,60 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
-  // Entrance animation
-  useEffect(() => {
-    const prefersReducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  useGSAP(() => {
+    const panel = mobileNavRef.current;
+    if (!panel) return;
 
-    if (prefersReducedMotion) return;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
-    const ctx = gsap.context(() => {
-      gsap.from(headerRef.current, {
-        y: -16,
+    if (!menuOpen) {
+      if (!hasOpenedMenuRef.current || prefersReducedMotion) {
+        gsap.set(panel, {
+          display: "none",
+          clearProps: "opacity,transform",
+        });
+        return;
+      }
+
+      gsap.set(panel, { display: "block", opacity: 1, y: 0 });
+      gsap.to(panel, {
         opacity: 0,
-        duration: 0.5,
+        y: -4,
+        duration: 0.2,
         ease: "power2.out",
+        onComplete: () => {
+          panel.style.display = "none";
+        },
       });
-    }, headerRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Mobile menu open/close animation with gsap.context for clean unmount/fast toggling
-  useEffect(() => {
-    if (!mobileNavRef.current) return;
-
-    const prefersReducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion) {
-      mobileNavRef.current.style.display = menuOpen ? "block" : "none";
-      mobileNavRef.current.style.opacity = "1";
       return;
     }
 
-    const ctx = gsap.context(() => {
-      if (menuOpen) {
-        gsap.set(mobileNavRef.current, { display: "block", height: 0, opacity: 0 });
-        gsap.to(mobileNavRef.current, {
-          height: "auto",
-          opacity: 1,
-          duration: 0.25,
-          ease: "power2.out",
-        });
-      } else {
-        gsap.to(mobileNavRef.current, {
-          height: 0,
-          opacity: 0,
-          duration: 0.2,
-          ease: "power2.in",
-          onComplete: () => {
-            if (mobileNavRef.current) {
-              gsap.set(mobileNavRef.current, { display: "none" });
-            }
-          },
-        });
-      }
-    }, mobileNavRef);
+    hasOpenedMenuRef.current = true;
+    gsap.set(panel, { display: "block" });
+    if (prefersReducedMotion) {
+      gsap.set(panel, { clearProps: "opacity,transform" });
+      return;
+    }
 
-    return () => ctx.revert();
-  }, [menuOpen]);
+    gsap.fromTo(
+      panel,
+      { opacity: 0, y: -4 },
+      { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
+    );
+  }, {
+    scope: mobileNavRef,
+    dependencies: [menuOpen],
+    revertOnUpdate: true,
+  });
 
   return (
-    <header
-      ref={headerRef}
+    <Reveal
+      as="header"
+      trigger="mount"
+      y={-8}
+      duration={0.6}
       className={`fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-200 ${
         scrolled
           ? "border-b border-steel-200 shadow-[0_1px_3px_0_rgba(7,20,38,0.04)]"
@@ -128,7 +118,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div ref={navRef} className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {navItems.map(({ label, href }) => (
             <NavLink
               key={label}
@@ -206,6 +196,6 @@ export default function Navbar() {
           </Link>
         </nav>
       </div>
-    </header>
+    </Reveal>
   );
 }

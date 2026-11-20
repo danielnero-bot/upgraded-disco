@@ -1,4 +1,5 @@
 import { FiMapPin, FiTruck, FiTool, FiUsers } from "react-icons/fi";
+import Reveal from "./Reveal";
 
 const strengths = [
   {
@@ -39,7 +40,7 @@ export default function WhyChooseUsSection() {
   return (
     <section className="border-y border-steel-200 bg-steel-50 py-24 lg:py-32">
       <div className="container-x">
-        <div className="mb-14 max-w-2xl">
+        <Reveal as="div" className="mb-14 max-w-2xl" stagger={0.08}>
           <div className="mb-3 inline-flex items-center gap-2 rounded-[var(--radius-card)] border border-steel-200 bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-800 shadow-xs">
             <span className="size-1.5 rounded-full bg-accent" />
             <span>Operational Value</span>
@@ -50,9 +51,13 @@ export default function WhyChooseUsSection() {
           <p className="mt-4 text-base leading-relaxed text-steel-600">
             Founded on decades of real-world execution in high-consequence environments where precision and safety are non-negotiable.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <Reveal
+          as="div"
+          className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4"
+          stagger={0.1}
+        >
           {strengths.map(
             ({ icon: Icon, number, title, description, label }) => (
               <article
@@ -79,7 +84,7 @@ export default function WhyChooseUsSection() {
               </article>
             ),
           )}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

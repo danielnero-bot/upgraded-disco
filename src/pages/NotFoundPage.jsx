@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import PageIntro from "../components/PageIntro";
+import Reveal from "../components/Reveal";
 
 export default function NotFoundPage() {
   return (
@@ -12,7 +13,7 @@ export default function NotFoundPage() {
         image="https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?auto=format&fit=crop&w=2200&q=85"
       />
       <section className="bg-white py-14 border-t border-slate-100">
-        <div className="container-x">
+        <Reveal as="div" className="container-x">
           <Link
             to="/"
             className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.98]"
@@ -20,7 +21,7 @@ export default function NotFoundPage() {
             <FiArrowLeft className="size-4" />
             <span>Return to Homepage</span>
           </Link>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

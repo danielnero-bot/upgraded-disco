@@ -5,8 +5,8 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useEffect, useLayoutEffect, useRef } from "react";
+import { ScrollTrigger } from "./animations";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import CapabilitiesSection from "./components/CapabilitiesSection";
@@ -41,27 +41,56 @@ function RoutedApp() {
   const location = useLocation();
   const contentRef = useRef(null);
 
-  // Page transition animation on route change
   useEffect(() => {
-    window.scrollTo(0, 0);
+    let active = true;
+    let refreshFrame = null;
 
-    if (!contentRef.current) return;
-
-    const prefersReducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion) {
-      gsap.set(contentRef.current, { opacity: 1, y: 0 });
-      return;
+    function scheduleRefresh() {
+      if (!active) return;
+      if (refreshFrame !== null) {
+        window.cancelAnimationFrame(refreshFrame);
+      }
+      refreshFrame = window.requestAnimationFrame(() => {
+        refreshFrame = null;
+        ScrollTrigger.refresh();
+      });
     }
 
-    gsap.fromTo(
-      contentRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+    const observer = new MutationObserver(scheduleRefresh);
+    if (contentRef.current) {
+      observer.observe(contentRef.current, { childList: true, subtree: true });
+    }
+
+    window.addEventListener("load", scheduleRefresh);
+    document.addEventListener("load", scheduleRefresh, true);
+    if (document.readyState === "complete") scheduleRefresh();
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(scheduleRefresh);
+    }
+
+    return () => {
+      active = false;
+      observer.disconnect();
+      window.removeEventListener("load", scheduleRefresh);
+      document.removeEventListener("load", scheduleRefresh, true);
+      if (refreshFrame !== null) {
+        window.cancelAnimationFrame(refreshFrame);
+      }
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = previousScrollBehavior;
+
+    const refreshFrame = window.requestAnimationFrame(() =>
+      ScrollTrigger.refresh(),
     );
-  }, [location]);
+    return () => window.cancelAnimationFrame(refreshFrame);
+  }, [location.key]);
   return (
     <>
       <Navbar />

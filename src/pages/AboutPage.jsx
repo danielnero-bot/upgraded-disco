@@ -7,8 +7,7 @@ import {
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
-import { useRef } from "react";
-import useScrollReveal from "../hooks/useScrollReveal";
+import Reveal from "../components/Reveal";
 import pic from "../assets/thumbnail.jpg";
 import pict from "../assets/2015-05-17 12.13.41(1).jpg";
 
@@ -45,24 +44,19 @@ const clientTypes = [
 ];
 
 export default function AboutPage() {
-  const pageRef = useRef(null);
-
-  useScrollReveal(pageRef, { stagger: 0.1 });
-
   return (
-    <div ref={pageRef} className="bg-white">
+    <div className="bg-white">
       <PageIntro
         eyebrow="About Kobbs Global"
         title="Built around the demanding realities of industrial movement."
         description="Established in 1997, Kobbs Global Services Nigeria Limited delivers specialized haulage, heavy-lift craneage, rig-move logistics, and equipment leasing across Nigeria's energy corridor."
         image={pict}
-        className="reveal"
       />
 
       {/* Story & Operating Base */}
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-6">
+          <Reveal as="div" className="lg:col-span-6" stagger={0.08}>
             <div className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
               <span className="size-1.5 rounded-full bg-blue-600" />
               Niger Delta Operations
@@ -78,9 +72,14 @@ export default function AboutPage() {
                 Our reputation is anchored in disciplined route planning, verified lifting engineering, and end-to-end field coordination. By combining specialized trailers with experienced operations personnel, we safeguard critical assets across challenging terrain.
               </p>
             </div>
-          </div>
+          </Reveal>
 
-          <figure className="relative min-h-80 overflow-hidden rounded-2xl border border-slate-100 shadow-xl shadow-slate-100/60 lg:col-span-6 lg:min-h-[28rem] group">
+          <Reveal
+            as="figure"
+            className="relative min-h-80 overflow-hidden rounded-2xl border border-slate-100 shadow-xl shadow-slate-100/60 lg:col-span-6 lg:min-h-[28rem] group"
+            variant="scale-in"
+            duration={0.8}
+          >
             <img
               src={pic}
               alt="Cargo cranes at a working industrial port"
@@ -100,13 +99,17 @@ export default function AboutPage() {
                 Ambassador Nne Furo Kurubo, Model Secondary School Road, Onne, Port Harcourt, Rivers State.
               </p>
             </figcaption>
-          </figure>
+          </Reveal>
         </div>
       </section>
 
       {/* Mission & Vision */}
       <section className="bg-white py-12 sm:py-16 border-y border-slate-100">
-        <div className="container-x grid gap-8 md:grid-cols-2">
+        <Reveal
+          as="div"
+          className="container-x grid gap-8 md:grid-cols-2"
+          stagger={0.1}
+        >
           <article className="rounded-xl border border-slate-100 bg-white p-8 shadow-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
               Our Mission
@@ -123,13 +126,13 @@ export default function AboutPage() {
               To remain the primary indigenous partner of choice for high-consequence transport and equipment operations across West Africa.
             </p>
           </article>
-        </div>
+        </Reveal>
       </section>
 
       {/* Operating Principles */}
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="container-x">
-          <div className="mb-12 max-w-2xl">
+          <Reveal as="div" className="mb-12 max-w-2xl" stagger={0.08}>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
               Our Execution Model
             </p>
@@ -139,9 +142,9 @@ export default function AboutPage() {
             <p className="mt-3 text-base text-slate-500">
               Each mobilization is tailored around cargo weight distribution, bridge clearances, and route hazards to guarantee zero surprises.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <Reveal as="div" className="grid gap-6 md:grid-cols-3" stagger={0.1}>
             {operatingPrinciples.map(
               ({ icon: Icon, number, title, description }) => (
                 <article
@@ -165,13 +168,17 @@ export default function AboutPage() {
                 </article>
               ),
             )}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Sectors Supported */}
       <section className="bg-white py-14 sm:py-16 border-t border-slate-100">
-        <div className="container-x flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <Reveal
+          as="div"
+          className="container-x flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between"
+          stagger={0.08}
+        >
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
               Sectors Served
@@ -190,13 +197,17 @@ export default function AboutPage() {
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Bottom CTA */}
       <section className="bg-white py-14 sm:py-18">
         <div className="container-x">
-          <div className="flex flex-col gap-6 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/60 to-white p-8 sm:flex-row sm:items-center sm:justify-between sm:p-12 shadow-sm">
+          <Reveal
+            as="div"
+            className="flex flex-col gap-6 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/60 to-white p-8 sm:flex-row sm:items-center sm:justify-between sm:p-12 shadow-sm"
+            stagger={0.08}
+          >
             <div className="max-w-xl">
               <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
                 Start a Conversation
@@ -212,7 +223,7 @@ export default function AboutPage() {
               <span>Contact Operations Desk</span>
               <FiArrowUpRight aria-hidden="true" className="size-4" />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

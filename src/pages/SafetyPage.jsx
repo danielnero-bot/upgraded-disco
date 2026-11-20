@@ -1,9 +1,8 @@
 import { FiActivity, FiCheckSquare, FiLifeBuoy } from "react-icons/fi";
-import { useRef } from "react";
 import PageIntro from "../components/PageIntro";
+import Reveal from "../components/Reveal";
 import SafetySection from "../components/SafetySection";
 import liftImage from "../assets/OIP (1).webp";
-import useScrollReveal from "../hooks/useScrollReveal";
 
 const safetyPhases = [
   {
@@ -36,12 +35,8 @@ const safetyPhases = [
 ];
 
 export default function SafetyPage() {
-  const pageRef = useRef(null);
-
-  useScrollReveal(pageRef, { stagger: 0.1, y: 15 });
-
   return (
-    <main ref={pageRef} className="bg-white">
+    <main className="bg-white">
       <PageIntro
         eyebrow="HSE & Safety Governance"
         title="Safety is woven into every operational decision."
@@ -54,7 +49,7 @@ export default function SafetyPage() {
       {/* Safety Cycle Section */}
       <section className="bg-white py-16 sm:py-20 border-t border-slate-100">
         <div className="container-x">
-          <div className="mb-12 max-w-2xl reveal">
+          <Reveal as="div" className="mb-12 max-w-2xl" stagger={0.08}>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
               Operational Safeguards
             </p>
@@ -64,13 +59,13 @@ export default function SafetyPage() {
             <p className="mt-3 text-base text-slate-500">
               Clear accountability and technical control parameters maintained from the moment cargo is surveyed until final handover.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="grid gap-6 lg:grid-cols-3">
+          <Reveal as="div" className="grid gap-6 lg:grid-cols-3" stagger={0.1}>
             {safetyPhases.map(({ icon: Icon, title, items }, index) => (
               <article
                 key={title}
-                className="group flex flex-col justify-between rounded-xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-100 hover:shadow-lg hover:shadow-blue-50/50 reveal"
+                className="group flex flex-col justify-between rounded-xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-100 hover:shadow-lg hover:shadow-blue-50/50"
               >
                 <div>
                   <div className="mb-6 flex items-center justify-between border-b border-slate-100 pb-4">
@@ -96,7 +91,7 @@ export default function SafetyPage() {
                 </div>
               </article>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
     </main>

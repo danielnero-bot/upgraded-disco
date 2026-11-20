@@ -5,9 +5,8 @@ import {
   FiSettings,
   FiLayers,
 } from "react-icons/fi";
-import { useRef } from "react";
 import { Link } from "react-router-dom";
-import useScrollReveal from "../hooks/useScrollReveal";
+import Reveal from "./Reveal";
 import Haulage from "../assets/Haulage.jpg";
 import Heavy from "../assets/heavy.jpg";
 import Rig from "../assets/OIP (1).webp";
@@ -54,33 +53,38 @@ const services = [
 ];
 
 export default function ServicesSection() {
-  const sectionRef = useRef(null);
-
-  useScrollReveal(sectionRef, { stagger: 0.08 });
-
   return (
-    <section
-      id="services"
-      ref={sectionRef}
-      className="bg-white py-24 lg:py-32"
-    >
+    <section id="services" className="bg-white py-24 lg:py-32">
       <div className="container-x">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="mb-3 inline-flex items-center gap-2 rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-800 shadow-xs reveal">
+            <Reveal
+              as="div"
+              className="mb-3 inline-flex items-center gap-2 rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-800 shadow-xs"
+            >
               <span className="size-1.5 rounded-full bg-accent" />
               <span>Deployment Portfolio</span>
-            </div>
-            <h2 className="text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl reveal">
+            </Reveal>
+            <Reveal
+              as="h2"
+              className="text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl"
+            >
               Core Specialized Services
-            </h2>
+            </Reveal>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-steel-600 reveal">
+          <Reveal
+            as="p"
+            className="max-w-md text-sm leading-relaxed text-steel-600"
+          >
             Heavy-duty industrial assets and certified transportation setups deployed across maritime, swamp, and dryland energy corridors.
-          </p>
+          </Reveal>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <Reveal
+          as="div"
+          className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4"
+          stagger={0.1}
+        >
           {services.map(
             ({
               icon: Icon,
@@ -93,14 +97,17 @@ export default function ServicesSection() {
             }) => (
               <article
                 key={number}
-                className="group flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-steel-200 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-700 hover:shadow-md reveal"
+                  className="group flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-steel-200 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-700 hover:shadow-md"
               >
                 <div className="relative h-52 shrink-0 overflow-hidden bg-steel-100 border-b border-steel-200">
-                  <img
+                    <Reveal
+                      as="img"
                     src={image}
                     alt={alt}
                     loading="lazy"
                     className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      variant="scale-in"
+                      duration={0.8}
                   />
                   <span className="absolute left-3 top-3 rounded-[var(--radius-card)] border border-steel-200/60 bg-white/95 px-2.5 py-1 text-xs font-bold text-navy-900 shadow-xs backdrop-blur-xs">
                     {number}
@@ -136,9 +143,12 @@ export default function ServicesSection() {
               </article>
             ),
           )}
-        </div>
+        </Reveal>
 
-        <div className="mt-12 flex flex-col gap-4 rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <Reveal
+          as="div"
+          className="mt-12 flex flex-col gap-4 rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 p-6 sm:flex-row sm:items-center sm:justify-between"
+        >
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-navy-700">
               Additional Logistics Support
@@ -154,7 +164,7 @@ export default function ServicesSection() {
             <span>Submit Fleet Needs</span>
             <FiArrowRight aria-hidden="true" className="size-4 text-steel-400" />
           </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

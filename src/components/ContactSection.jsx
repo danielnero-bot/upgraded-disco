@@ -1,4 +1,5 @@
 import { FiArrowRight, FiPhone, FiMail, FiMapPin } from "react-icons/fi";
+import Reveal from "./Reveal";
 
 const contactDetails = [
   {
@@ -29,7 +30,7 @@ export default function ContactSection() {
           {/* Subtle decorative rule */}
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
-          <div className="relative max-w-3xl">
+          <Reveal as="div" className="relative max-w-3xl" stagger={0.08}>
             <span className="inline-flex items-center gap-2 rounded-[var(--radius-card)] border border-navy-700 bg-navy-800 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-steel-200">
               Dispatch & Assessment
             </span>
@@ -57,7 +58,11 @@ export default function ContactSection() {
               </a>
             </div>
 
-            <div className="mt-12 grid gap-6 border-t border-navy-800 pt-8 sm:grid-cols-3">
+            <Reveal
+              as="div"
+              className="mt-12 grid gap-6 border-t border-navy-800 pt-8 sm:grid-cols-3"
+              stagger={0.1}
+            >
               {contactDetails.map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="space-y-1.5">
                   <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-steel-400">
@@ -76,8 +81,8 @@ export default function ContactSection() {
                   )}
                 </div>
               ))}
-            </div>
-          </div>
+            </Reveal>
+          </Reveal>
         </div>
       </div>
     </section>

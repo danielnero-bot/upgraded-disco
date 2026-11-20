@@ -6,6 +6,7 @@ import {
   FiArrowUpRight,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Reveal from "./Reveal";
 
 const safeguards = [
   {
@@ -37,28 +38,32 @@ export default function SafetySection() {
     <section id="safety" className="border-y border-steel-200 bg-steel-50 py-24 lg:py-32">
       <div className="container-x">
         {/* Banner */}
-        <div className="mb-12 flex flex-col gap-4 rounded-[var(--radius-card)] border border-steel-200 bg-white p-6 shadow-xs sm:flex-row sm:items-center sm:justify-between">
+        <Reveal
+          as="div"
+          className="mb-12 flex flex-col gap-4 rounded-[var(--radius-card)] border border-steel-200 bg-white p-6 shadow-xs sm:flex-row sm:items-center sm:justify-between"
+          stagger={0.08}
+        >
           <div className="flex items-center gap-3.5">
             <div className="flex size-11 items-center justify-center rounded-[var(--radius-card)] bg-steel-100 text-navy-900">
               <FiShield aria-hidden="true" className="size-6 shrink-0" />
             </div>
-            <div>
+            <Reveal as="div" stagger={0.08}>
               <p className="text-base font-bold text-navy-900">
                 Safety First · Operational Integrity · Zero-Harm Mandate
               </p>
               <p className="text-xs text-steel-600">
                 Every mile surveyed, every lift calculated, zero compromise.
               </p>
-            </div>
+            </Reveal>
           </div>
           <span className="w-fit rounded-[var(--radius-card)] border border-steel-200 bg-steel-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-800 shadow-xs">
             Zero-Harm Policy
           </span>
-        </div>
+        </Reveal>
 
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
           <div className="space-y-6 lg:col-span-7">
-            <div>
+            <Reveal as="div" stagger={0.08}>
               <div className="mb-3 inline-flex items-center gap-2 rounded-[var(--radius-card)] border border-steel-200 bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-800 shadow-xs">
                 <span className="size-1.5 rounded-full bg-accent" />
                 <span>Field HSE Governance</span>
@@ -69,9 +74,9 @@ export default function SafetySection() {
               <p className="mt-4 text-base leading-relaxed text-steel-600">
                 In heavy industrial transport and engineered craneage, safety is the prerequisite for all operations. We combine systematic risk engineering, strict equipment certifications, and trained personnel.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="space-y-4">
+            <Reveal as="div" className="space-y-4" stagger={0.1}>
               {safeguards.map(({ icon: Icon, title, text }) => (
                 <article
                   key={title}
@@ -90,10 +95,13 @@ export default function SafetySection() {
                   </div>
                 </article>
               ))}
-            </div>
+            </Reveal>
           </div>
 
-          <aside className="rounded-[var(--radius-card)] border border-steel-200 bg-white p-7 shadow-xs lg:col-span-5">
+          <Reveal
+            as="aside"
+            className="rounded-[var(--radius-card)] border border-steel-200 bg-white p-7 shadow-xs lg:col-span-5"
+          >
             <div className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-navy-700">
               <FiShield aria-hidden="true" />
               <span>Compliance Documentation</span>
@@ -135,7 +143,7 @@ export default function SafetySection() {
                 <FiArrowUpRight aria-hidden="true" className="size-4 text-steel-400" />
               </Link>
             </div>
-          </aside>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Reveal from "./Reveal";
 
 export default function PageIntro({
   eyebrow,
@@ -6,11 +7,12 @@ export default function PageIntro({
   description,
   image,
   imageAlt = "",
+  className = "",
 }) {
   return (
-    <section className="border-b border-steel-200 bg-steel-50 pb-14 pt-28 sm:pb-18 sm:pt-36 lg:pb-20 lg:pt-40">
+    <section className={`${className} border-b border-steel-200 bg-steel-50 pb-14 pt-28 sm:pb-18 sm:pt-36 lg:pb-20 lg:pt-40`}>
       <div className="container-x grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-        <div className="lg:col-span-6">
+        <Reveal as="div" className="lg:col-span-6" stagger={0.08}>
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="mb-5 flex items-center gap-2 text-xs font-medium text-steel-400">
             <Link to="/" className="text-steel-600 transition-colors hover:text-navy-900">
@@ -38,9 +40,14 @@ export default function PageIntro({
               {description}
             </p>
           )}
-        </div>
+        </Reveal>
 
-        <div className="relative min-h-64 overflow-hidden rounded-[var(--radius-card)] border border-steel-200 bg-steel-100 sm:min-h-80 lg:col-span-6 lg:min-h-96">
+        <Reveal
+          as="div"
+          variant="scale-in"
+          duration={0.8}
+          className="relative min-h-64 overflow-hidden rounded-[var(--radius-card)] border border-steel-200 bg-steel-100 sm:min-h-80 lg:col-span-6 lg:min-h-96"
+        >
           {image ? (
             <img
               src={image}
@@ -54,7 +61,7 @@ export default function PageIntro({
               <span>Asset placeholder · Kobbs Operations</span>
             </div>
           )}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

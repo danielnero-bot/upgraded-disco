@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiMail, FiMapPin, FiPhone, FiArrowRight } from "react-icons/fi";
 import PageIntro from "../components/PageIntro";
+import Reveal from "../components/Reveal";
 
 const contactMethods = [
   {
@@ -57,7 +58,7 @@ export default function ContactPage() {
       <section className="bg-white py-16 sm:py-20 border-t border-slate-100">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:items-start">
           {/* Form */}
-          <div className="lg:col-span-7">
+          <Reveal as="div" className="lg:col-span-7" stagger={0.08}>
             <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
               Technical Assessment Desk
             </span>
@@ -166,10 +167,14 @@ export default function ContactPage() {
                 </div>
               )}
             </form>
-          </div>
+          </Reveal>
 
           {/* Sidebar */}
-          <aside className="lg:col-span-5 space-y-6">
+          <Reveal
+            as="aside"
+            className="lg:col-span-5 space-y-6"
+            stagger={0.1}
+          >
             <div className="rounded-2xl border border-slate-100 bg-white p-7 sm:p-8 shadow-lg shadow-slate-100/60">
               <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
                 Direct Contact
@@ -178,7 +183,7 @@ export default function ContactPage() {
                 Reach Operations Desk
               </h3>
               
-              <div className="mt-6 space-y-6">
+              <Reveal as="div" className="mt-6 space-y-6" stagger={0.1}>
                 {contactMethods.map(({ icon: Icon, label, value, href }) => (
                   <div
                     key={label}
@@ -204,13 +209,13 @@ export default function ContactPage() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </Reveal>
             </div>
 
             <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-6 text-xs leading-relaxed text-slate-500">
               <span className="font-semibold text-slate-800">Expedited Assessment Tip:</span> Providing accurate length x width x height dimensions and gross tonnages allows our engineers to immediately identify required axle configurations and bridge permits.
             </div>
-          </aside>
+          </Reveal>
         </div>
       </section>
     </div>

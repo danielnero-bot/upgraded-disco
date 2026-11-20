@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo1.png";
 import { FiArrowUpRight } from "react-icons/fi";
+import Reveal from "./Reveal";
 
 const footerGroups = [
   {
@@ -36,7 +37,11 @@ export default function Footer() {
   return (
     <footer className="border-t border-navy-900 bg-navy-950 text-steel-200">
       <div className="container-x py-14 sm:py-16">
-        <div className="grid gap-10 pb-12 md:grid-cols-2 xl:grid-cols-5 border-b border-navy-900">
+        <Reveal
+          as="div"
+          className="grid gap-10 pb-12 md:grid-cols-2 xl:grid-cols-5 border-b border-navy-900"
+          stagger={0.1}
+        >
           <div className="space-y-5 xl:col-span-2">
             <Link
               to="/"
@@ -88,9 +93,12 @@ export default function Footer() {
               </nav>
             </div>
           ))}
-        </div>
+        </Reveal>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-xs text-steel-400">
+        <Reveal
+          as="div"
+          className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-xs text-steel-400"
+        >
           <p>
             © {new Date().getFullYear()} Kobbs Global Services Nigeria Limited. Established 1997.
           </p>
@@ -106,7 +114,7 @@ export default function Footer() {
               <FiArrowUpRight className="size-3" />
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

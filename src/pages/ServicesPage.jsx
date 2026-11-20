@@ -1,6 +1,7 @@
 import { FiClipboard, FiTool, FiTruck, FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import PageIntro from "../components/PageIntro";
+import Reveal from "../components/Reveal";
 import ServicesSection from "../components/ServicesSection";
 import img from "../assets/thumbnail (6).jpg";
 
@@ -36,7 +37,7 @@ export default function ServicesPage() {
       {/* Workflow Section */}
       <section className="bg-white py-16 sm:py-20 border-t border-slate-100">
         <div className="container-x">
-          <div className="mb-12 max-w-2xl">
+          <Reveal as="div" className="mb-12 max-w-2xl" stagger={0.08}>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
               Execution Process
             </p>
@@ -46,9 +47,9 @@ export default function ServicesPage() {
             <p className="mt-3 text-base text-slate-500">
               A disciplined, three-stage workflow ensuring seamless mobilization and risk-free execution.
             </p>
-          </div>
+          </Reveal>
           
-          <div className="grid gap-6 md:grid-cols-3">
+          <Reveal as="div" className="grid gap-6 md:grid-cols-3" stagger={0.1}>
             {deliverySteps.map(({ icon: Icon, title, text }, index) => (
               <article
                 key={title}
@@ -68,9 +69,9 @@ export default function ServicesPage() {
                 </p>
               </article>
             ))}
-          </div>
+          </Reveal>
 
-          <div className="mt-10">
+          <Reveal as="div" className="mt-10">
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.98]"
@@ -78,7 +79,7 @@ export default function ServicesPage() {
               <span>Discuss a Requirement</span>
               <FiArrowRight aria-hidden="true" className="size-4" />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>
