@@ -1,7 +1,6 @@
 import { FiArrowRight, FiCompass, FiShield, FiTruck } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
-import heroImage from "../assets/thumbnail.jpg";
 import heroVideo from "../assets/designarena_video_4piic8up.mp4";
 
 // Rule 6: Render stats strip only behind SHOW_STATS constant set to false
@@ -47,7 +46,6 @@ export default function HeroSection() {
           duration={0.9}
           delay={0.05}
           src={heroVideo}
-          poster={heroImage}
           autoPlay
           muted
           loop
